@@ -1,8 +1,7 @@
-import { number, object, string, z } from "zod";
+import { object, string, z } from "zod";
 
 // Zod validation schema defines fields required for creating a car.
 const createJobPostSchema = object({
-  createdAt: z.date().default(() => new Date()),
   title: string({
     required_error:
       "A job title is required. Please provide a title for the job post you are creating.",
