@@ -1,7 +1,13 @@
 <template>
   <div>
     <div v-if="jobPosts">
-      <p v-for="jobPost in jobPosts" :key="jobPost.id">{{ jobPost.title }}</p>
+      <NuxtLink
+        v-for="jobPost in jobPosts"
+        :key="jobPost._id"
+        :to="`/job-posts/${jobPost._id}`"
+      >
+        <p>{{ jobPost.title }}</p>
+      </NuxtLink>
     </div>
     <div v-if="pending">
       <p>Loading...</p>
