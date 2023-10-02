@@ -1,4 +1,4 @@
-import getJobPosts from "~/server/handlers/jobPost/getJobPosts";
+import { jobPostsCollection } from "~/server/lib/db/mongodb/collections";
 
 export default defineEventHandler(async (event) => {
   const { method } = event.node.req;
@@ -6,15 +6,19 @@ export default defineEventHandler(async (event) => {
   // This handler gets all job posts from the database.
   if (method === "GET") {
     try {
-      const jobPosts = await getJobPosts(event);
+      // Find and return all the job posts from the db.
+      const jobPosts = await jobPostsCollection.find().toArray();
 
       return {
         success: true,
         data: jobPosts,
       };
     } catch (error) {
+      // If an error occurs then log the error and return an unsuccessful statement.
+      const errorMessage = (error as Error).message;
       return {
         success: false,
+        errorMessage,
       };
     }
   }
