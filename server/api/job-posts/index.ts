@@ -38,9 +38,10 @@ export default defineEventHandler(async (event) => {
       }
 
       // STEP 2: Create a new job post in the database.
-      const createdJobPost = await jobPostsCollection.insertOne(
-        validation.data
-      );
+      const createdJobPost = await jobPostsCollection.insertOne({
+        createdAt: new Date(),
+        ...validation.data,
+      });
 
       if (!createdJobPost) {
         throw createError({
