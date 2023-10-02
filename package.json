@@ -16,6 +16,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.11.7",
     "mongodb": "^6.1.0",
     "vee-validate": "^4.11.7",
     "winston": "^3.10.0",
