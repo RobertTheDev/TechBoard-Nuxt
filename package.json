@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "mongodb": "^6.1.0",
+    "vee-validate": "^4.11.7",
     "winston": "^3.10.0",
     "zod": "^3.22.2"
   }
