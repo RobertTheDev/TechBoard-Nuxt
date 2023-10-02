@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import JobPost from "@/models/jobPost/interfaces/JobPost";
+import JobPost from '@/models/jobPost/interfaces/JobPost';
 
 const { id } = useRoute().params;
 

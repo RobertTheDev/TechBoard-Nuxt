@@ -1,12 +1,12 @@
-import { H3Event, EventHandlerRequest } from "h3";
-import { ObjectId } from "mongodb";
-import updateJobPostSchema from "~/models/jobPost/validators/updateJobPost.schema";
-import { jobPostsCollection } from "~/server/lib/db/mongodb/collections";
+import { H3Event, EventHandlerRequest } from 'h3';
+import { ObjectId } from 'mongodb';
+import updateJobPostSchema from '~/models/jobPost/validators/updateJobPost.schema';
+import { jobPostsCollection } from '~/server/lib/db/mongodb/collections';
 
 // This handler validates the request body and updates a job post by its unique id.
 
 export default async function updateJobPostById(
-  event: H3Event<EventHandlerRequest>
+  event: H3Event<EventHandlerRequest>,
 ) {
   // STEP 1: Validate the request body.
   const body = await readBody(event);
@@ -25,13 +25,13 @@ export default async function updateJobPostById(
   // STEP 2: Update the job post by its id with the validated data.
   const updatedJobPost = await jobPostsCollection.findOneAndUpdate(
     { _id: new ObjectId(id) },
-    { $set: validation.data }
+    { $set: validation.data },
   );
 
   if (!updatedJobPost) {
     throw createError({
       statusCode: 400,
-      statusMessage: "No user was found with the provided id.",
+      statusMessage: 'No user was found with the provided id.',
     });
   }
 

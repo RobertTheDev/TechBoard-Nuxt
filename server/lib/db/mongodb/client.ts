@@ -1,9 +1,9 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
 const mongodbUrl = String(process.env.MONGODB_URL);
 const mongodbClient = new MongoClient(mongodbUrl);
 
-const databaseName = "TechBoard";
+const databaseName = 'TechBoard';
 
 const mongoClient = mongodbClient.db(databaseName);
 

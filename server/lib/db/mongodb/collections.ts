@@ -1,3 +1,3 @@
-import mongoClient from "./client";
+import mongoClient from './client';
 
-export const jobPostsCollection = mongoClient.collection("jobPosts");
+export const jobPostsCollection = mongoClient.collection('jobPosts');

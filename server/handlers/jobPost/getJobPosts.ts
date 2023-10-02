@@ -1,4 +1,4 @@
-import { jobPostsCollection } from "~/server/lib/db/mongodb/collections";
+import { jobPostsCollection } from '~/server/lib/db/mongodb/collections';
 
 // This handler finds and returns all the job posts from the db.
 

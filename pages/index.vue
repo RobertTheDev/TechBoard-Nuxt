@@ -17,12 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import IJobPost from "@/models/jobPost/interfaces/JobPost";
+import IJobPost from '@/models/jobPost/interfaces/JobPost';
 
 const {
   data: jobPosts,
   pending,
   error,
   refresh,
-} = await useFetch<IJobPost[]>("/api/job-posts");
+} = await useFetch<IJobPost[]>('/api/job-posts');
 </script>

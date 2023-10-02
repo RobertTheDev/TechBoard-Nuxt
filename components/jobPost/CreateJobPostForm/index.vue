@@ -16,17 +16,17 @@
       </p>
 
       <button :disabled="formHandler.pending" type="submit">
-        {{ formHandler.pending ? "Loading..." : "Create Job Post" }}
+        {{ formHandler.pending ? 'Loading...' : 'Create Job Post' }}
       </button>
     </Form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ErrorMessage, Field, Form } from "vee-validate";
-import { toTypedSchema } from "@vee-validate/zod";
-import createJobPostSchema from "~/models/jobPost/validators/createJobPost.schema";
-import IFormHandler from "~/models/configs/interfaces/FormHandler";
+import { ErrorMessage, Field, Form } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import createJobPostSchema from '~/models/jobPost/validators/createJobPost.schema';
+import IFormHandler from '~/models/configs/interfaces/FormHandler';
 
 const veeValidateZodSchema = toTypedSchema(createJobPostSchema);
 
@@ -38,7 +38,7 @@ const formHandler = ref<IFormHandler>({
 
 async function handleCreateJobPost(body: any) {
   const { pending, error } = await useFetch(`/api/job-posts`, {
-    method: "POST",
+    method: 'POST',
     body,
   });
   if (pending.value) {
@@ -46,7 +46,7 @@ async function handleCreateJobPost(body: any) {
   } else if (error.value) {
     formHandler.value.errorMessage = error.value.message;
   } else {
-    formHandler.value.successMessage = "Successfully created job offer.";
+    formHandler.value.successMessage = 'Successfully created job offer.';
   }
 }
 </script>
