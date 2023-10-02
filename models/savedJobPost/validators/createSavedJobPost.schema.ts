@@ -1,7 +1,7 @@
 import { object, string, z } from 'zod';
 
 // Zod validation schema defines fields required for creating a saved job post.
-const createJobPostSchema = object({
+const createSavedJobPostSchema = object({
   jobPostId: string({
     required_error:
       'A job post ID is required. Please provide an ID for the job post you are saving.',
@@ -15,6 +15,8 @@ const createJobPostSchema = object({
 });
 
 // Create a TypeScript type from the schema.
-export type CreateJobPostSchemaType = z.infer<typeof createJobPostSchema>;
+export type CreateSavedJobPostSchemaType = z.infer<
+  typeof createSavedJobPostSchema
+>;
 
-export default createJobPostSchema;
+export default createSavedJobPostSchema;
