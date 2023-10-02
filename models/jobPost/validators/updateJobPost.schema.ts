@@ -1,8 +1,7 @@
 import { number, object, string, z } from 'zod';
 
-// Zod validation schema defines fields required for creating a car.
+// Zod validation schema defines fields required for updating a job post.
 const updateJobPostSchema = object({
-  updatedAt: z.date().default(() => new Date()),
   title: string({
     invalid_type_error: 'Job title must be a string.',
   })
