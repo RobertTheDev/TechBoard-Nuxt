@@ -1,4 +1,4 @@
-import { number, object, string, z } from 'zod';
+import { object, string, z } from 'zod';
 
 // Zod validation schema defines fields required for updating a job post.
 const updateJobPostSchema = object({
