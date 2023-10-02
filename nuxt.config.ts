@@ -1,4 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import componentsConfig from "./components.config";
+
 export default defineNuxtConfig({
-  devtools: { enabled: true }
-})
+  components: componentsConfig,
+  devtools: { enabled: true },
+});

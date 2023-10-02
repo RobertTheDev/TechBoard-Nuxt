@@ -1,14 +1,11 @@
 const componentsConfig = [
   {
-    path: "~/components",
-  },
-  {
     path: "~/components/jobPost",
-    pathPrefix: true,
+    pathPrefix: false,
   },
   {
     path: "~/components/layout",
-    pathPrefix: true,
+    pathPrefix: false,
   },
 ];
 
