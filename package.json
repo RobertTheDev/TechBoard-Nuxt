@@ -16,8 +16,15 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/parser": "^6.7.4",
     "@vee-validate/zod": "^4.11.7",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "mongodb": "^6.1.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
     "vee-validate": "^4.11.7",
     "winston": "^3.10.0",
     "zod": "^3.22.2"
