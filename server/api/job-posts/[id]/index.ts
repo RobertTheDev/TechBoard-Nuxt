@@ -17,25 +17,20 @@ export default defineEventHandler(async (event) => {
       });
 
       if (!jobPost) {
-        return {
-          success: false,
-        };
+        throw createError({
+          statusCode: 400,
+          statusMessage: "No job post was found with that id.",
+        });
       }
 
-      return {
-        success: true,
-        data: jobPost,
-      };
+      return jobPost;
     } catch (error) {
       // If an error occurs then log the error and return an unsuccessful statement.
       const errorMessage = (error as Error).message;
       winstonLogger.error(
         `Error in route ${method} ${originalUrl}: ${errorMessage}`
       );
-      return {
-        success: false,
-        errorMessage,
-      };
+      return error;
     }
   }
 
@@ -48,14 +43,14 @@ export default defineEventHandler(async (event) => {
       });
 
       if (!deletedJobPost) {
-        return {
-          success: false,
-        };
+        throw createError({
+          statusCode: 400,
+          statusMessage: "Could not delete the job post. Please try again.",
+        });
       }
 
       return {
-        success: true,
-        data: {},
+        statusMessage: "The job post was successfully deleted.",
       };
     } catch (error) {
       // If an error occurs then log the error and return an unsuccessful statement.
@@ -63,10 +58,7 @@ export default defineEventHandler(async (event) => {
       winstonLogger.error(
         `Error in route ${method} ${originalUrl}: ${errorMessage}`
       );
-      return {
-        success: false,
-        errorMessage,
-      };
+      return error;
     }
   }
 
@@ -79,9 +71,10 @@ export default defineEventHandler(async (event) => {
       const validation = await updateJobPostSchema.safeParseAsync(body);
 
       if (!validation.success) {
-        return {
-          success: false,
-        };
+        throw createError({
+          statusCode: 400,
+          statusMessage: validation.error.errors[0].message,
+        });
       }
 
       // STEP 2: Update the job post by its id with the validated data.
@@ -91,9 +84,10 @@ export default defineEventHandler(async (event) => {
       );
 
       if (!updatedJobPost) {
-        return {
-          success: false,
-        };
+        throw createError({
+          statusCode: 400,
+          statusMessage: "No user was found with the provided id.",
+        });
       }
 
       // STEP 3: Find and return the job post by its unique id.
@@ -101,20 +95,14 @@ export default defineEventHandler(async (event) => {
         _id: new ObjectId(updatedJobPost._id),
       });
 
-      return {
-        success: true,
-        data: findJobPost,
-      };
+      return findJobPost;
     } catch (error) {
       // If an error occurs then log the error and return an unsuccessful statement.
       const errorMessage = (error as Error).message;
       winstonLogger.error(
         `Error in route ${method} ${originalUrl}: ${errorMessage}`
       );
-      return {
-        success: false,
-        errorMessage,
-      };
+      return error;
     }
   }
 });
