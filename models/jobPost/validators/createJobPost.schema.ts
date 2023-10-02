@@ -1,6 +1,6 @@
 import { object, string, z } from 'zod';
 
-// Zod validation schema defines fields required for creating a car.
+// Zod validation schema defines fields required for creating a job post.
 const createJobPostSchema = object({
   title: string({
     required_error:
