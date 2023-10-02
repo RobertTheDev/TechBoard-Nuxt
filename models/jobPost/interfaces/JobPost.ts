@@ -1,5 +1,5 @@
 export default interface IJobPost {
-  id: string;
+  _id: string;
   createdAt: Date;
   updatedAt?: Date;
   title: string;
