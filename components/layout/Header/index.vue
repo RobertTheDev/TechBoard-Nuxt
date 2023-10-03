@@ -1,6 +1,6 @@
 <template>
   <header class="bg-white">
-    <p>{{ companyName }}</p>
+    <NuxtLink to="/">{{ companyName }}</NuxtLink>
     <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
   </header>
 </template>
