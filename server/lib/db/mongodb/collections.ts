@@ -7,3 +7,5 @@ export const companiesCollection = mongoClient.collection('companies');
 export const companyOwnersCollection = mongoClient.collection('companyOwners');
 
 export const jobPostsCollection = mongoClient.collection('jobPosts');
+
+export const usersCollection = mongoClient.collection('users');
