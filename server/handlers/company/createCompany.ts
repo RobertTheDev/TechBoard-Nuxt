@@ -5,7 +5,7 @@ import createCompanySchema from '~/models/company/validators/createCompany.schem
 
 // This handler validates the request body and creates a new company.
 
-export default async function createJobPost(
+export default async function createCompany(
   event: H3Event<EventHandlerRequest>,
 ) {
   // STEP 1: Validate the request body.
