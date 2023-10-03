@@ -42,7 +42,7 @@ export default async function createJobPost(
   if (!jobPost) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'No user was found with the provided id.',
+      statusMessage: 'No job post was found with the provided id.',
     });
   }
 
