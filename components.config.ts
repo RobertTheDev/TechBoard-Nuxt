@@ -1,5 +1,9 @@
 const componentsConfig = [
   {
+    path: '~/components/auth',
+    pathPrefix: false,
+  },
+  {
     path: '~/components/company',
     pathPrefix: false,
   },
