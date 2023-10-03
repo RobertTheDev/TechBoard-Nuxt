@@ -31,14 +31,14 @@ export default async function updateJobPostById(
   if (!updatedJobPost) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'No user was found with the provided id.',
+      statusMessage: 'No job post was found with the provided id.',
     });
   }
 
   // STEP 3: Find and return the job post by its unique id.
-  const findJobPost = await jobPostsCollection.findOne({
+  const jobPost = await jobPostsCollection.findOne({
     _id: new ObjectId(updatedJobPost._id),
   });
 
-  return findJobPost;
+  return jobPost;
 }
