@@ -10,11 +10,16 @@
       <button v-if="!user">Sign In</button>
       <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
     </div>
+    <button @click="handleToggleProfileMenu">Profile</button>
   </header>
 </template>
 
 <script setup lang="ts">
 import companyName from '~/lib/constants/companyName';
+
+function handleToggleProfileMenu() {
+  alert('hello');
+}
 
 async function handleSignOut() {
   const { pending, error } = await useFetch(`/api/auth/sign-out`);
