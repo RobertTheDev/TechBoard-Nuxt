@@ -1,11 +1,15 @@
 <template>
-  <header class="bg-white">
-    <NuxtLink to="/">{{ companyName }}</NuxtLink>
-    <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
-    <p v-if="user">{{ user.emailAddress }}</p>
-    <button v-if="user" @click="handleSignOut">Sign Out</button>
-    <button v-if="!user">Sign In</button>
-    <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
+  <header class="bg-white h-16 min-w-full flex items-center p-4 shadow-lg">
+    <div class="flex flex-1 justify-start items-center">
+      <NuxtLink to="/">{{ companyName }}</NuxtLink>
+    </div>
+    <div class="flex flex-1 justify-end items-center">
+      <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
+      <p v-if="user">{{ user.emailAddress }}</p>
+      <button v-if="user" @click="handleSignOut">Sign Out</button>
+      <button v-if="!user">Sign In</button>
+      <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
+    </div>
   </header>
 </template>
 
