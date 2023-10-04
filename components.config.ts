@@ -15,6 +15,10 @@ const componentsConfig = [
     path: '~/components/layout',
     pathPrefix: false,
   },
+  {
+    path: '~/components/settings',
+    pathPrefix: false,
+  },
 ];
 
 export default componentsConfig;
