@@ -6,6 +6,7 @@
 
     <label htmlFor="password">Password</label>
     <Field type="password" name="password" />
+    <NuxtLink to="/auth/forgot-password">Forgot password?</NuxtLink>
     <ErrorMessage name="password" />
 
     <p v-if="formHandler.errorMessage">
