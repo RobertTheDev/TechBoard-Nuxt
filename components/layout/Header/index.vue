@@ -18,6 +18,12 @@
             class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8"
           >
             <p>Profile Menu</p>
+            <NuxtLink
+              v-for="profileMenuLink in profileMenuLinks"
+              :to="profileMenuLink.path"
+              :key="profileMenuLink.path"
+              >{{ profileMenuLink.name }}</NuxtLink
+            >
             <button @click="handleSignOut">Sign Out</button>
           </div>
         </Teleport>
@@ -28,6 +34,7 @@
 
 <script setup lang="ts">
 import companyName from '~/lib/constants/companyName';
+import profileMenuLinks from '~/lib/links/profileMenuLinks';
 
 const profileMenuActive = ref(false);
 
