@@ -11,13 +11,14 @@
       <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
     </div>
     <button @click="handleToggleProfileMenu">Profile</button>
-
-    <div
-      v-if="profileMenuActive"
-      class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8"
-    >
-      <p>Profile Menu</p>
-    </div>
+    <Teleport to="body">
+      <div
+        v-if="profileMenuActive"
+        class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8"
+      >
+        <p>Profile Menu</p>
+      </div>
+    </Teleport>
   </header>
 </template>
 
