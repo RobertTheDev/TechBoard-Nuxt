@@ -1,14 +1,20 @@
 <template>
-  <Form @submit="handleSignIn" :validation-schema="signInValidationSchema">
-    <label htmlFor="emailAddress">Email address</label>
-    <Field type="email" name="emailAddress" />
-    <ErrorMessage name="emailAddress" />
-
-    <label htmlFor="password">Password</label>
-    <Field type="password" name="password" />
-    <NuxtLink to="/auth/forgot-password">Forgot password?</NuxtLink>
-    <ErrorMessage name="password" />
-
+  <Form
+    @submit="handleSignIn"
+    :validation-schema="signInValidationSchema"
+    class="flex flex-col w-1/2 gap-8"
+  >
+    <div>
+      <label htmlFor="emailAddress">Email address</label>
+      <Field type="email" name="emailAddress" />
+      <ErrorMessage name="emailAddress" />
+    </div>
+    <div>
+      <label htmlFor="password">Password</label>
+      <Field type="password" name="password" />
+      <NuxtLink to="/auth/forgot-password">Forgot password?</NuxtLink>
+      <ErrorMessage name="password" />
+    </div>
     <p v-if="formHandler.errorMessage">
       {{ formHandler.errorMessage }}
     </p>
