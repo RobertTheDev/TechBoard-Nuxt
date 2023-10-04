@@ -1,6 +1,6 @@
 <template>
-  <div>
+  <NuxtLayout name="settings">
     <h1>Verify Email</h1>
     <VerifyEmailForm />
-  </div>
+  </NuxtLayout>
 </template>
