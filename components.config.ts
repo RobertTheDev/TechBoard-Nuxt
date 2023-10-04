@@ -16,6 +16,10 @@ const componentsConfig = [
     pathPrefix: false,
   },
   {
+    path: '~/components/profile',
+    pathPrefix: false,
+  },
+  {
     path: '~/components/settings',
     pathPrefix: false,
   },
