@@ -15,6 +15,8 @@
       {{ formHandler.successMessage }}
     </p>
 
+    <NuxtLink to="/auth/sign-up">Don't have an account? Sign Up.</NuxtLink>
+
     <button :disabled="formHandler.pending" type="submit">
       {{ formHandler.pending ? 'Loading...' : 'Sign In' }}
     </button>
