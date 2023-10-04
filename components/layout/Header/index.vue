@@ -4,21 +4,25 @@
       <NuxtLink to="/">{{ companyName }}</NuxtLink>
     </div>
     <div class="flex flex-1 justify-end items-center">
-      <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
-      <p v-if="user">{{ user.emailAddress }}</p>
-      <button v-if="user" @click="handleSignOut">Sign Out</button>
-      <button v-if="!user">Sign In</button>
-      <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
-    </div>
-    <button @click="handleToggleProfileMenu">Profile</button>
-    <Teleport to="body">
-      <div
-        v-if="profileMenuActive"
-        class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8"
-      >
-        <p>Profile Menu</p>
+      <div v-if="!user">
+        <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
       </div>
-    </Teleport>
+      <div v-if="user">
+        <p>{{ user.emailAddress }}</p>
+        <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
+
+        <button @click="handleToggleProfileMenu">Profile</button>
+        <Teleport to="body">
+          <div
+            v-if="profileMenuActive"
+            class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8"
+          >
+            <p>Profile Menu</p>
+            <button @click="handleSignOut">Sign Out</button>
+          </div>
+        </Teleport>
+      </div>
+    </div>
   </header>
 </template>
 
