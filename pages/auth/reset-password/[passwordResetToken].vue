@@ -4,3 +4,9 @@
     <ResetPasswordForm />
   </div>
 </template>
+
+<script setup lang="ts">
+definePageMeta({
+  middleware: ['is-signed-out'],
+});
+</script>
