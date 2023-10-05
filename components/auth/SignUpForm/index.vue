@@ -57,6 +57,7 @@ async function handleSignUp(body: any) {
   const { pending, error } = await useFetch(`/api/auth/sign-up`, {
     method: 'POST',
     body,
+    credentials: 'include',
   });
   if (pending.value) {
     formHandler.value.pending = pending.value;
