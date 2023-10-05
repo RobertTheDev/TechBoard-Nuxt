@@ -4,13 +4,18 @@ import getSessionUser from '../auth/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import changePasswordSchema from '~/models/settings/validators/changePasswordSchema';
+import isAuthenticated from '../auth/isAuthenticated';
+import hashPassword from '~/server/lib/passwordManagement/hashPassword';
 
 // This handler validates the request body and changes the user's password.
 
 export default async function changePassword(
   event: H3Event<EventHandlerRequest>,
 ) {
-  // STEP 1: Validate the request body.
+  // STEP 1: Check user is authenticated.
+  await isAuthenticated(event);
+
+  // STEP 2: Validate the request body.
   const body = await readBody(event);
 
   const validation = await changePasswordSchema.safeParseAsync(body);
@@ -22,7 +27,7 @@ export default async function changePassword(
     });
   }
 
-  // STEP 2: Get the user's data.
+  // STEP 3: Get the user's data.
   const { _id } = await getSessionUser(event);
 
   const user = await usersCollection.findOne({
@@ -36,10 +41,10 @@ export default async function changePassword(
     });
   }
 
-  // STEP 3: Check current password entered is correct.
+  // STEP 4: Check current password entered is correct.
   const { currentPassword } = validation.data;
 
-  const checkPassword = await verifyPassword(currentPassword, user.password);
+  const checkPassword = await verifyPassword(user.password, currentPassword);
 
   if (!checkPassword) {
     throw createError({
@@ -48,7 +53,17 @@ export default async function changePassword(
     });
   }
 
-  // STEP 4: Change the user password.
+  // STEP 5: Hash the new password.
+  const hashedPassword = await hashPassword(validation.data.newPassword);
+
+  if (!hashedPassword) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'There was en error. Please try again.',
+    });
+  }
+
+  // STEP 5: Change the user password.
   const changedPassword = await usersCollection.findOneAndUpdate(
     {
       _id: new ObjectId(user._id),
@@ -56,7 +71,7 @@ export default async function changePassword(
     {
       $set: {
         updatedAt: new Date(),
-        password: validation.data.newPassword,
+        password: hashedPassword,
       },
     },
   );
@@ -68,7 +83,7 @@ export default async function changePassword(
     });
   }
 
-  // STEP 5: Return success message.
+  // STEP 6: Return success message.
 
   return 'Password succesfully reset.';
 }
