@@ -3,11 +3,15 @@ import { usersCollection } from '../../lib/db/mongodb/collections';
 import { useSession } from '~/server/lib/session';
 import signInSchema from '~/models/auth/validators/signIn.schema';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
+import isSignedIn from './isSignedIn';
 
 // This handler validates the request body and finds a user with their email address and signs them into session.
 
 export default async function signIn(event: H3Event<EventHandlerRequest>) {
-  // STEP 1: Validate the request body.
+  // STEP 1: Check if user is signed in.
+  await isSignedIn(event);
+
+  // STEP 2: Validate and get data from the request body.
   const body = await readBody(event);
 
   const validation = await signInSchema.safeParseAsync(body);
@@ -19,9 +23,10 @@ export default async function signIn(event: H3Event<EventHandlerRequest>) {
     });
   }
 
+  // Get the important data from validation.
   const { emailAddress, password } = validation.data;
 
-  // STEP 2: Find the user by their email address.
+  // STEP 3: Find the user by their email address.
   const signedInUser = await usersCollection.findOne({
     emailAddress,
   });
@@ -29,11 +34,11 @@ export default async function signIn(event: H3Event<EventHandlerRequest>) {
   if (!signedInUser) {
     throw createError({
       statusCode: 400,
-      statusMessage: `No user with email ${emailAddress} was found in our records.`,
+      statusMessage: `No user found with email ${emailAddress}.`,
     });
   }
 
-  // STEP 3: Verify the user's password.
+  // STEP 4: Verify the user's password.
   const verifyUser = await verifyPassword(signedInUser.password, password);
 
   if (!verifyUser) {
@@ -43,7 +48,7 @@ export default async function signIn(event: H3Event<EventHandlerRequest>) {
     });
   }
 
-  // STEP 4: Sign the user into session.
+  // STEP 5: Remove password field from signed in user and sign rest of data into session.
   const { password: _, ...userDataWithoutPassword } = signedInUser;
 
   const session = await useSession(event);
@@ -52,6 +57,6 @@ export default async function signIn(event: H3Event<EventHandlerRequest>) {
 
   await session.save();
 
-  // STEP 5: Return success message.
+  // STEP 6: Return success message.
   return 'Successfully signed in.';
 }
