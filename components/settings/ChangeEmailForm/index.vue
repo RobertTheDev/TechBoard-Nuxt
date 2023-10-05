@@ -53,6 +53,7 @@ async function handleChangeEmail(body: any) {
     formHandler.value.errorMessage = error.value.statusMessage;
   } else {
     formHandler.value.successMessage = 'Successfully changed email address.';
+    window.location.reload();
   }
 }
 </script>
