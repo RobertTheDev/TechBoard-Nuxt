@@ -53,6 +53,7 @@ async function handleCloseAccount(body: any) {
     formHandler.value.errorMessage = error.value.statusMessage;
   } else {
     formHandler.value.successMessage = 'Successfully closed your account.';
+    window.location.reload();
   }
 }
 </script>
