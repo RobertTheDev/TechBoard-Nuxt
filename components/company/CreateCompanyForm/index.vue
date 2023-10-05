@@ -16,7 +16,7 @@
       </p>
 
       <button :disabled="formHandler.pending" type="submit">
-        {{ formHandler.pending ? 'Loading...' : 'Create Job Post' }}
+        {{ formHandler.pending ? 'Loading...' : 'Create Company' }}
       </button>
     </Form>
   </div>
