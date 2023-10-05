@@ -44,6 +44,7 @@ async function handlePasswordReset(body: any) {
     {
       method: 'PUT',
       body,
+      credentials: 'include',
     },
   );
   if (pending.value) {
