@@ -1,21 +1,29 @@
 <template>
-  <Form @submit="handleSignUp" :validation-schema="signUpValidationSchema">
-    <label htmlFor="emailAddress">Email address</label>
-    <Field type="email" name="emailAddress" />
-    <ErrorMessage name="emailAddress" />
-
-    <label htmlFor="firstName">First Name</label>
-    <Field type="text" name="firstName" />
-    <ErrorMessage name="firstName" />
-
-    <label htmlFor="lastName">Last Name</label>
-    <Field type="text" name="lastName" />
-    <ErrorMessage name="lastName" />
-
-    <label htmlFor="password">Password</label>
-    <Field type="password" name="password" />
-    <ErrorMessage name="password" />
-
+  <Form
+    @submit="handleSignUp"
+    :validation-schema="signUpValidationSchema"
+    class="flex flex-col w-72 gap-8"
+  >
+    <div class="flex flex-col">
+      <label htmlFor="emailAddress">Email address</label>
+      <Field type="email" name="emailAddress" />
+      <ErrorMessage name="emailAddress" />
+    </div>
+    <div class="flex flex-col">
+      <label htmlFor="firstName">First Name</label>
+      <Field type="text" name="firstName" />
+      <ErrorMessage name="firstName" />
+    </div>
+    <div class="flex flex-col">
+      <label htmlFor="lastName">Last Name</label>
+      <Field type="text" name="lastName" />
+      <ErrorMessage name="lastName" />
+    </div>
+    <div class="flex flex-col">
+      <label htmlFor="password">Password</label>
+      <Field type="password" name="password" />
+      <ErrorMessage name="password" />
+    </div>
     <p v-if="formHandler.errorMessage">
       {{ formHandler.errorMessage }}
     </p>
