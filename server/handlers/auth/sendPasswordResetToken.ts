@@ -1,15 +1,19 @@
 import { H3Event, EventHandlerRequest } from 'h3';
 import { usersCollection } from '../../lib/db/mongodb/collections';
-import getSessionUser from '../auth/getSessionUser';
-import { ObjectId } from 'mongodb';
 import sendPasswordResetTokenSchema from '~/models/auth/validators/sendPasswordResetToken.schema';
+import isSignedIn from './isSignedIn';
+import generateToken from '~/server/lib/tokenManagement/generateToken';
+import isTokenUnexpired from '~/server/lib/tokenManagement/isTokenUnexpired';
 
 // This handler validates the request body and sends the password reset token to user's email.
 
 export default async function sendPasswordResetToken(
   event: H3Event<EventHandlerRequest>,
 ) {
-  // STEP 1: Validate the request body.
+  // STEP 1: Check if user is signed in.
+  await isSignedIn(event);
+
+  // STEP 2: Validate the request body.
   const body = await readBody(event);
 
   const validation = await sendPasswordResetTokenSchema.safeParseAsync(body);
@@ -21,38 +25,44 @@ export default async function sendPasswordResetToken(
     });
   }
 
-  // STEP 2: Get the user's data.
-  const { _id } = await getSessionUser(event);
+  // STEP 3: Get the user's data.
+  const { emailAddress } = validation.data;
 
   const user = await usersCollection.findOne({
-    _id: new ObjectId(_id),
+    emailAddress,
   });
 
   if (!user) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'User was not found.',
+      statusMessage: `No user was found with email ${emailAddress}.`,
     });
   }
 
-  // STEP 3: Create the password reset token with expiry.
+  // STEP 4: Check user has no valid token and reate the password reset token with expiry using generate token handler.
+  const checkTokenExpired = await isTokenUnexpired(
+    user.passwordResetTokenExpiryTime,
+  );
 
-  // Create an expiry time 10 minutes from now.
-  const currentTimeInMS = new Date().getTime();
+  if (checkTokenExpired) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Your password reset token has not expired.',
+    });
+  }
 
-  const passwordResetTokenExpiryTime = new Date(
-    currentTimeInMS + 10 * 60 * 1000,
-  ).getTime();
+  const { token, tokenExpiryTime } = await generateToken();
 
-  // Create a random UUID to use as a token.
-  const passwordResetToken = crypto.randomUUID();
+  const passwordResetTokenExpiryTime = tokenExpiryTime;
 
-  // STEP 4: Send the password reset email.
+  const passwordResetToken = token;
 
-  // STEP 5: Add token and expiry to the user in the db.
+  // STEP 5: Send the password reset email.
+
+  // STEP 6: Add token and expiry to the user in the db.
   const updatedUser = await usersCollection.findOneAndUpdate(
     {
-      _id: new ObjectId(user._id),
+      emailAddress,
     },
     {
       $set: {
@@ -66,11 +76,12 @@ export default async function sendPasswordResetToken(
   if (!updatedUser) {
     throw createError({
       statusCode: 400,
-      statusMessage: `Failed to update user with password reset token. Please try again.`,
+      statusMessage:
+        'Failed to update user with password reset token. Please try again.',
     });
   }
 
-  // STEP 6: Return success message.
+  // STEP 7: Return success message.
 
   return 'Succesfully sent password reset email.';
 }
