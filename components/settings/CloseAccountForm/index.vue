@@ -46,7 +46,6 @@ async function handleCloseAccount(body: any) {
   const { pending, error } = await useFetch('/api/settings/close-account', {
     method: 'DELETE',
     body,
-    credentials: 'include',
   });
   if (pending.value) {
     formHandler.value.pending = pending.value;
