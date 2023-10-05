@@ -8,6 +8,10 @@ const componentsConfig = [
     pathPrefix: false,
   },
   {
+    path: '~/components/companyOwner',
+    pathPrefix: false,
+  },
+  {
     path: '~/components/jobPost',
     pathPrefix: false,
   },
