@@ -47,6 +47,7 @@ async function handleSendPasswordResetToken(body: any) {
     {
       method: 'POST',
       body,
+      credentials: 'include',
     },
   );
   if (pending.value) {
