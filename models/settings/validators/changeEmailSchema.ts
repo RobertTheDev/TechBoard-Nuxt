@@ -2,12 +2,12 @@ import { object, string, z } from 'zod';
 
 // Zod validation schema defines fields required for changing an email address.
 const changeEmailSchema = object({
-  emailAddress: string({
-    required_error: 'Email address is required.',
-    invalid_type_error: 'Email address must be a string.',
+  newEmailAddress: string({
+    required_error: 'New email address is required.',
+    invalid_type_error: 'New email address must be a string.',
   })
-    .email('Email address must be in valid email format.')
-    .nonempty('Email address cannot be empty.'),
+    .email('New email address must be in valid email format.')
+    .nonempty('New email address cannot be empty.'),
   password: string({
     required_error: 'Password is required.',
     invalid_type_error: 'Password must be a string.',
