@@ -39,7 +39,7 @@ export default async function sendPasswordResetToken(
     });
   }
 
-  // STEP 4: Check user has no valid token and reate the password reset token with expiry using generate token handler.
+  // STEP 4: Check user has no valid token and create the password reset token with expiry using generate token handler.
   const checkTokenExpired = await isTokenUnexpired(
     user.passwordResetTokenExpiryTime,
   );
