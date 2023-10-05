@@ -4,11 +4,11 @@
       <NuxtLink to="/">{{ companyName }}</NuxtLink>
     </div>
     <div class="flex flex-1 justify-end items-center">
-      <div v-if="!user">
+      <div v-if="!profile">
         <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
       </div>
-      <div v-if="user">
-        <p>{{ user.emailAddress }}</p>
+      <div v-if="profile">
+        <p>{{ profile.emailAddress }}</p>
         <NuxtLink to="/job-posts/create">Create Job Post</NuxtLink>
 
         <button @click="handleToggleProfileMenu">Profile</button>
@@ -54,9 +54,9 @@ async function handleSignOut() {
 }
 
 const {
-  data: user,
+  data: profile,
   pending,
   error,
   refresh,
-} = await useFetch<{ id: string; emailAddress: string }>('/api/auth/session');
+} = await useFetch<{ id: string; emailAddress: string }>('/api/profile');
 </script>
