@@ -7,10 +7,11 @@
       <p>You have no companies yet.</p>
     </div>
     <div v-if="companies">
-      <div v-for="company in companies">
-        <p>{{ company._id }}</p>
-        <p>{{ company.company.name }}</p>
-      </div>
+      <CompanyOwnerCard
+        v-for="company in companies"
+        :key="company._id"
+        v-bind="company"
+      />
     </div>
   </div>
 </template>
