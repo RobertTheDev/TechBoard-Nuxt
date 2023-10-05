@@ -5,13 +5,17 @@ import getSessionUser from '../auth/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import signOut from '../auth/signOut';
+import isAuthenticated from '../auth/isAuthenticated';
 
 // This handler validates the request body and sends a password reset token.
 
 export default async function closeAccount(
   event: H3Event<EventHandlerRequest>,
 ) {
-  // STEP 1: Validate the request body.
+  // STEP 1: Check user is authenticated.
+  await isAuthenticated(event);
+
+  // STEP 2: Validate the request body.
   const body = await readBody(event);
 
   const validation = await closeAccountSchema.safeParseAsync(body);
@@ -23,7 +27,7 @@ export default async function closeAccount(
     });
   }
 
-  // STEP 2: Get the user's data.
+  // STEP 3: Get the user's data.
   const { _id } = await getSessionUser(event);
 
   const user = await usersCollection.findOne({
@@ -37,10 +41,10 @@ export default async function closeAccount(
     });
   }
 
-  // STEP 3: Check password is correct.
+  // STEP 4: Check password is correct.
   const { password } = validation.data;
 
-  const checkPassword = await verifyPassword(password, user.password);
+  const checkPassword = await verifyPassword(user.password, password);
 
   if (!checkPassword) {
     throw createError({
@@ -49,7 +53,7 @@ export default async function closeAccount(
     });
   }
 
-  // STEP 4: Delete the user.
+  // STEP 5: Delete the user.
   const deletedUser = await usersCollection.deleteOne({
     _id: new ObjectId(_id),
   });
@@ -61,11 +65,11 @@ export default async function closeAccount(
     });
   }
 
-  // STEP 5: Sign the user out.
+  // STEP 6: Sign the user out.
 
   await signOut(event);
 
-  // STEP 6: Return success message.
+  // STEP 7: Return success message.
 
   return 'Succesfully closed your account.';
 }
