@@ -50,13 +50,13 @@ export default async function signUp(event: H3Event<EventHandlerRequest>) {
   }
 
   // STEP 5: Creates or signs up a new user in the database.
-  const signedUpUser = await usersCollection.insertOne({
+  const signUp = await usersCollection.insertOne({
     createdAt: new Date(),
     ...userDataWithoutPassword,
     password: hashedPassword,
   });
 
-  if (!signedUpUser) {
+  if (!signUp) {
     throw createError({
       statusCode: 400,
       statusMessage:
@@ -64,10 +64,24 @@ export default async function signUp(event: H3Event<EventHandlerRequest>) {
     });
   }
 
+  // STEP 6: Find newly created user and sign them into session.
+  const signedUpUser = await usersCollection.findOne({
+    emailAddress,
+  });
+
+  if (!signedUpUser) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: `No user found with email ${emailAddress}.`,
+    });
+  }
+
   // STEP 6: Sign the user into session.
+  const { password: _, ...signedUpUserData } = signedUpUser;
+
   const session = await useSession(event);
 
-  session.user = userDataWithoutPassword;
+  session.user = signedUpUserData;
 
   await session.save();
 
