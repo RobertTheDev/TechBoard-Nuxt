@@ -2,14 +2,14 @@
   <Form
     @submit="handleSignIn"
     :validation-schema="signInValidationSchema"
-    class="flex flex-col w-1/2 gap-8"
+    class="flex flex-col w-72 gap-8"
   >
-    <div>
+    <div class="flex flex-col">
       <label htmlFor="emailAddress">Email address</label>
       <Field type="email" name="emailAddress" />
       <ErrorMessage name="emailAddress" />
     </div>
-    <div>
+    <div class="flex flex-col">
       <label htmlFor="password">Password</label>
       <Field type="password" name="password" />
       <NuxtLink to="/auth/forgot-password">Forgot password?</NuxtLink>
