@@ -4,13 +4,17 @@ import getSessionUser from '../auth/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import changeEmailSchema from '~/models/settings/validators/changeEmailSchema';
+import isAuthenticated from '../auth/isAuthenticated';
 
 // This handler validates the request body and changes the user's email address.
 
 export default async function changeEmailAddress(
   event: H3Event<EventHandlerRequest>,
 ) {
-  // STEP 1: Validate the request body.
+  // STEP 1: Check user is authenticated.
+  await isAuthenticated(event);
+
+  // STEP 2: Validate the request body.
   const body = await readBody(event);
 
   const validation = await changeEmailSchema.safeParseAsync(body);
@@ -22,7 +26,7 @@ export default async function changeEmailAddress(
     });
   }
 
-  // STEP 2: Get the user's data.
+  // STEP 3: Get the user's data.
   const { _id } = await getSessionUser(event);
 
   const user = await usersCollection.findOne({
@@ -36,10 +40,34 @@ export default async function changeEmailAddress(
     });
   }
 
-  // STEP 3: Check password entered is correct.
+  // STEP 4: Check new email address is different to current email.
+  const isNewEmailDifferent =
+    validation.data.newEmailAddress !== user.emailAddress;
+
+  if (!isNewEmailDifferent) {
+    throw createError({
+      statusCode: 400,
+      statusMessage:
+        'Your new email address cannot be the same as your current one.',
+    });
+  }
+
+  // STEP 5: Check the user's email is not taken.
+  const isEmailTaken = await usersCollection.findOne({
+    emailAddress: validation.data.newEmailAddress,
+  });
+
+  if (isEmailTaken) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: `${validation.data.newEmailAddress} is already in use.`,
+    });
+  }
+
+  // STEP 6: Check password entered is correct.
   const { password } = validation.data;
 
-  const checkPassword = await verifyPassword(password, user.password);
+  const checkPassword = await verifyPassword(user.password, password);
 
   if (!checkPassword) {
     throw createError({
@@ -48,7 +76,7 @@ export default async function changeEmailAddress(
     });
   }
 
-  // STEP 4: Change the user email address.
+  // STEP 7: Change the user email address.
   const changedEmailAddress = await usersCollection.findOneAndUpdate(
     {
       _id: new ObjectId(user._id),
@@ -56,7 +84,8 @@ export default async function changeEmailAddress(
     {
       $set: {
         updatedAt: new Date(),
-        emailAddress: validation.data.emailAddress,
+        emailAddress: validation.data.newEmailAddress,
+        emailVerified: null,
       },
     },
   );
@@ -68,7 +97,7 @@ export default async function changeEmailAddress(
     });
   }
 
-  // STEP 5: Return success message.
+  // STEP 8: Return success message.
 
   return 'Succesfully changed your email address.';
 }
