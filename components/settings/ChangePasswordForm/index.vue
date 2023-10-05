@@ -46,7 +46,6 @@ async function handleChangePassword(body: any) {
   const { pending, error } = await useFetch('/api/settings/change-password', {
     method: 'PUT',
     body,
-    credentials: 'include',
   });
   if (pending.value) {
     formHandler.value.pending = pending.value;
