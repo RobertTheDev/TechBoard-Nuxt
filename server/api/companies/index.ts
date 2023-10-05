@@ -20,9 +20,7 @@ export default defineEventHandler(async (event) => {
   }
   if (method === 'POST') {
     try {
-      const body = await readBody(event);
-
-      return await createCompany(body);
+      return await createCompany(event);
     } catch (error) {
       const errorMessage = (error as Error).message;
 
