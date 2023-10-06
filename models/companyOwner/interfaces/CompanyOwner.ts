@@ -5,8 +5,9 @@ export default interface ICompanyOwner {
   _id: string;
   createdAt: string;
   updatedAt?: Date;
-  companyId: string;
-  userId: string;
+
   company: ICompany;
+  companyId: string;
   user: IUser;
+  userId: string;
 }
