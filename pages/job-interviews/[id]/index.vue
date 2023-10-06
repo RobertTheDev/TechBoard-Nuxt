@@ -29,4 +29,16 @@ const {
   error,
   refresh,
 } = await useFetch<IJobInterview | null>('/api/job-interviews/:id');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `Job Interview | ${companyName}`,
+  ogTitle: `Job Interview | ${companyName}`,
+  description: ``,
+  ogDescription: ``,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
