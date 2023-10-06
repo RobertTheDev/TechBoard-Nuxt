@@ -10,6 +10,7 @@ export default interface IJobApplication {
   // Local Fields.
   cvUrl: string;
   message: string | null;
+  status: string;
 
   // Lookup Fields.
   jobPost: IJobPost;
