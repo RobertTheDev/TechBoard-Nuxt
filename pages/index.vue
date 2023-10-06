@@ -7,6 +7,11 @@
         v-bind="jobPost"
       />
     </div>
+
+    <div v-if="!jobPosts">
+      <p>No job posts found.</p>
+    </div>
+
     <div v-if="pending">
       <p>Loading...</p>
     </div>
