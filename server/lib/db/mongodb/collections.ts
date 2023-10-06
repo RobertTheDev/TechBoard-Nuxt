@@ -9,6 +9,9 @@ export const companyFollowersCollection =
 
 export const companyOwnersCollection = mongoClient.collection('companyOwners');
 
+export const jobApplicationsCollection =
+  mongoClient.collection('jobApplications');
+
 export const jobPostsCollection = mongoClient.collection('jobPosts');
 
 export const usersCollection = mongoClient.collection('users');
