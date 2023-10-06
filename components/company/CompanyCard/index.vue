@@ -5,5 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-const company = defineProps<{ _id: string; name: string }>();
+import ICompany from '~/models/company/interfaces/Company';
+
+const company = defineProps<ICompany>();
 </script>
