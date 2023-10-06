@@ -12,6 +12,10 @@ const componentsConfig = [
     pathPrefix: false,
   },
   {
+    path: '~/components/jobOffer',
+    pathPrefix: false,
+  },
+  {
     path: '~/components/jobPost',
     pathPrefix: false,
   },
