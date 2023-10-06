@@ -29,4 +29,16 @@ const {
   error,
   refresh,
 } = await useFetch<ICompany | null>('/api/companies/:id');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `${company.value ? company.value.name : 'Company'} | ${companyName}`,
+  ogTitle: `${company.value ? company.value.name : 'Company'} | ${companyName}`,
+  description: ``,
+  ogDescription: ``,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
