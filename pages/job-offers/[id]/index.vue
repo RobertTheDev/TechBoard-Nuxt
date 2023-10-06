@@ -29,4 +29,16 @@ const {
   error,
   refresh,
 } = await useFetch<IJobOffer | null>('/api/job-offers/:id');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `Job Offer | ${companyName}`,
+  ogTitle: `Job Offer | ${companyName}`,
+  description: ``,
+  ogDescription: ``,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
