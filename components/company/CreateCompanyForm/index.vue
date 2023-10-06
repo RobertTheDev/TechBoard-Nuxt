@@ -1,25 +1,40 @@
 <template>
-  <div>
-    <Form
-      @submit="handleCreateJobPost"
-      :validation-schema="veeValidateZodSchema"
-    >
-      <label htmlFor="name">Add name</label>
-      <Field type="text" name="name" />
-      <ErrorMessage name="name" />
+  <Form @submit="handleCreateJobPost" :validation-schema="veeValidateZodSchema">
+    <label htmlFor="name">Add name</label>
+    <Field type="text" name="name" />
+    <ErrorMessage name="name" />
 
-      <p v-if="formHandler.errorMessage">
-        {{ formHandler.errorMessage }}
-      </p>
-      <p v-if="formHandler.successMessage">
-        {{ formHandler.successMessage }}
-      </p>
+    <label htmlFor="category">Add category</label>
+    <Field type="text" name="category" />
+    <ErrorMessage name="category" />
 
-      <button :disabled="formHandler.pending" type="submit">
-        {{ formHandler.pending ? 'Loading...' : 'Create Company' }}
-      </button>
-    </Form>
-  </div>
+    <label htmlFor="coverImageUrl">Add cover image url</label>
+    <Field type="url" name="coverImageUrl" />
+    <ErrorMessage name="coverImageUrl" />
+
+    <label htmlFor="description">Add description</label>
+    <Field type="text" name="description" />
+    <ErrorMessage name="description" />
+
+    <label htmlFor="logoUrl">Add logo url</label>
+    <Field type="url" name="logoUrl" />
+    <ErrorMessage name="logoUrl" />
+
+    <label htmlFor="totalEmployees">Add total employees</label>
+    <Field type="text" name="totalEmployees" />
+    <ErrorMessage name="totalEmployees" />
+
+    <p v-if="formHandler.errorMessage">
+      {{ formHandler.errorMessage }}
+    </p>
+    <p v-if="formHandler.successMessage">
+      {{ formHandler.successMessage }}
+    </p>
+
+    <button :disabled="formHandler.pending" type="submit">
+      {{ formHandler.pending ? 'Loading...' : 'Create Company' }}
+    </button>
+  </Form>
 </template>
 
 <script lang="ts" setup>
@@ -47,6 +62,7 @@ async function handleCreateJobPost(body: any) {
     formHandler.value.errorMessage = error.value.message;
   } else {
     formHandler.value.successMessage = 'Successfully created company.';
+    window.location.reload();
   }
 }
 </script>
