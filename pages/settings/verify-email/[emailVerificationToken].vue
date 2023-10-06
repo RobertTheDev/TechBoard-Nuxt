@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <p>Token</p>
-  </div>
+  <NuxtLayout name="settings">
+    <h1>Verify Email</h1>
+    <VerifyEmailForm />
+  </NuxtLayout>
 </template>
-
-<script setup lang="ts"></script>
