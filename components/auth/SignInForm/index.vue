@@ -2,29 +2,67 @@
   <Form
     @submit="handleSignIn"
     :validation-schema="signInValidationSchema"
-    class="flex flex-col w-72 gap-8"
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
-    <div class="flex flex-col">
-      <label htmlFor="emailAddress">Email address</label>
-      <Field type="email" name="emailAddress" />
-      <ErrorMessage name="emailAddress" />
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="emailAddress"
+      >
+        Email Address
+      </label>
+      <Field
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="email"
+        name="emailAddress"
+        placeholder="Email address"
+      />
+      <ErrorMessage class="text-red-500 text-xs italic" name="emailAddress" />
     </div>
-    <div class="flex flex-col">
-      <label htmlFor="password">Password</label>
-      <Field type="password" name="password" />
-      <NuxtLink to="/auth/forgot-password">Forgot password?</NuxtLink>
-      <ErrorMessage name="password" />
+
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="password"
+        >Password</label
+      >
+      <Field
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+
+      <ErrorMessage class="text-red-500 text-xs italic" name="password" />
     </div>
-    <p v-if="formHandler.errorMessage">
-      {{ formHandler.errorMessage }}
-    </p>
-    <p v-if="formHandler.successMessage">
-      {{ formHandler.successMessage }}
-    </p>
+    <div>
+      <NuxtLink
+        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+        to="/auth/forgot-password"
+        >Forgot password?</NuxtLink
+      >
+      <p v-if="formHandler.errorMessage" class="text-red-500 text-xs italic">
+        {{ formHandler.errorMessage }}
+      </p>
+      <p
+        v-if="formHandler.successMessage"
+        class="text-green-500 text-xs italic"
+      >
+        {{ formHandler.successMessage }}
+      </p>
+    </div>
 
-    <NuxtLink to="/auth/sign-up">Don't have an account? Sign Up.</NuxtLink>
+    <NuxtLink
+      class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+      to="/auth/sign-up"
+      >Don't have an account? Sign Up.</NuxtLink
+    >
 
-    <button :disabled="formHandler.pending" type="submit">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+      :disabled="formHandler.pending"
+    >
       {{ formHandler.pending ? 'Loading...' : 'Sign In' }}
     </button>
   </Form>
