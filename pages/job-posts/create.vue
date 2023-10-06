@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Create Job Post</p>
+    <h1>Create Job Post</h1>
     <CreateJobPostForm />
   </div>
 </template>
