@@ -31,6 +31,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@typescript-eslint/parser": "^6.7.4",
     "@vee-validate/zod": "^4.11.7",
+    "@vueuse/core": "^10.4.1",
     "argon2": "^0.31.1",
     "eslint": "^8.50.0",
     "eslint-plugin-prettier": "^5.0.0",
