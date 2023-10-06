@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div v-if="!jobOffers">
+    <div v-if="!jobOffers || jobOffers.length <= 0">
       <p>No job offers were found.</p>
     </div>
 
@@ -32,7 +32,7 @@ const {
   pending,
   error,
   refresh,
-} = await useFetch<IJobOffer[]>('/api/');
+} = await useFetch<IJobOffer[]>('/api/profile/job-offers');
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
