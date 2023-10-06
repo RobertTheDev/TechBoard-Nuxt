@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout name="settings">
-    <h1>Verify Email</h1>
-    <VerifyEmailForm />
+    <h1>Send Email Verfication</h1>
+    <SendEmailVerficationForm />
   </NuxtLayout>
 </template>
