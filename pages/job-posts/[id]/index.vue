@@ -3,9 +3,15 @@
     <div v-if="jobPost">
       <p>{{ jobPost.title }}</p>
     </div>
+
+    <div v-if="!jobPost">
+      <p>No job post was found.</p>
+    </div>
+
     <div v-if="pending">
       <p>Loading...</p>
     </div>
+
     <div v-if="error">
       <button @click="refresh()">Retry</button>
     </div>
