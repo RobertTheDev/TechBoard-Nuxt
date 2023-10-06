@@ -5,5 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-const jobPost = defineProps<{ _id: string; title: string }>();
+import IJobPost from '~/models/jobPost/interfaces/JobPost';
+
+const jobPost = defineProps<IJobPost>();
 </script>
