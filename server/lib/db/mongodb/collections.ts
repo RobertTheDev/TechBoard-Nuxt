@@ -12,6 +12,8 @@ export const companyOwnersCollection = mongoClient.collection('companyOwners');
 export const jobApplicationsCollection =
   mongoClient.collection('jobApplications');
 
+export const jobInterviewsCollection = mongoClient.collection('jobInterviews');
+
 export const jobPostsCollection = mongoClient.collection('jobPosts');
 
 export const usersCollection = mongoClient.collection('users');
