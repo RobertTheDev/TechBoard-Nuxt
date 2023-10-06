@@ -34,4 +34,16 @@ const {
   error,
   refresh,
 } = await useFetch<ICompanyOwner[]>('/api/company-owners/authenticated-user');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `My Companies | ${companyName}`,
+  ogTitle: `My Companies | ${companyName}`,
+  description: `Explore the companies you've created on TechBoard. Create new companies and manage existing ones seamlessly. Optimize your hiring process and attract top talent for your job openings.`,
+  ogDescription: `Explore the companies you've created on TechBoard. Create new companies and manage existing ones seamlessly. Optimize your hiring process and attract top talent for your job openings.`,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
