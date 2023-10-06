@@ -1,6 +1,8 @@
 <template>
   <Teleport to="body">
-    <div class="bg-red-300 top-16 absolute right-0 w-auto h-auto p-8">
+    <div
+      class="bg-red-300 flex flex-col gap-8 top-16 absolute right-0 w-auto h-auto p-8"
+    >
       <p>Profile Menu</p>
       <NuxtLink
         v-for="profileMenuLink in profileMenuLinks"
