@@ -12,6 +12,18 @@ const profileMenuLinks = [
     path: '/profile/my-companies',
   },
   {
+    name: 'Job Applications',
+    path: '/profile/job-applications',
+  },
+  {
+    name: 'Job Interviews',
+    path: '/profile/job-interviews',
+  },
+  {
+    name: 'Job Offers',
+    path: '/profile/job-offers',
+  },
+  {
     name: 'Settings',
     path: '/settings/change-email',
   },
