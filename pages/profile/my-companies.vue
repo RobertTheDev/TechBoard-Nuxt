@@ -4,7 +4,7 @@
     <button>Create Company</button>
     <CreateCompanyForm />
 
-    <div v-if="!companies">
+    <div v-if="!companies || companies.length <= 0">
       <p>You have no companies yet.</p>
     </div>
 
@@ -33,7 +33,7 @@ const {
   pending,
   error,
   refresh,
-} = await useFetch<ICompanyOwner[]>('/api/company-owners/authenticated-user');
+} = await useFetch<ICompanyOwner[]>('/api/profile/companies');
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
