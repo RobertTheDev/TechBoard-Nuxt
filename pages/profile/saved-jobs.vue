@@ -3,14 +3,16 @@
     <h1>Saved Jobs</h1>
 
     <div v-if="savedJobPosts">
-      <JobOfferCard
+      <p
         v-for="savedJobPost in savedJobPosts"
         :key="savedJobPost._id"
         v-bind="savedJobPost"
-      />
+      >
+        {{ savedJobPost.jobPost?._id }}
+      </p>
     </div>
 
-    <div v-if="!savedJobPosts">
+    <div v-if="!savedJobPosts || savedJobPosts.length <= 0">
       <p>No saved jobs were found.</p>
     </div>
 
@@ -32,7 +34,7 @@ const {
   pending,
   error,
   refresh,
-} = await useFetch<ISavedJobPost[]>('/api/');
+} = await useFetch<ISavedJobPost[]>('/api/profile/saved-jobs');
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
