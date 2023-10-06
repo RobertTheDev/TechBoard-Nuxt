@@ -28,4 +28,16 @@ const {
   error,
   refresh,
 } = await useFetch<IProfile>('/api/profile');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `Profile | ${companyName}`,
+  ogTitle: `Profile | ${companyName}`,
+  description: ``,
+  ogDescription: ``,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
