@@ -4,6 +4,9 @@ import mongoClient from './client';
 
 export const companiesCollection = mongoClient.collection('companies');
 
+export const companyFollowersCollection =
+  mongoClient.collection('companyFollowers');
+
 export const companyOwnersCollection = mongoClient.collection('companyOwners');
 
 export const jobPostsCollection = mongoClient.collection('jobPosts');
