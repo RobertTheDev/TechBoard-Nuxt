@@ -1,5 +1,36 @@
 <template>
   <div>
     <h1>Job Applications</h1>
+
+    <div v-if="jobApplications">
+      <JobApplicationCard
+        v-for="jobApplication in jobApplications"
+        :key="jobApplication._id"
+        v-bind="jobApplication"
+      />
+    </div>
+
+    <div v-if="!jobApplications">
+      <p>No job applications were found.</p>
+    </div>
+
+    <div v-if="pending">
+      <p>Loading...</p>
+    </div>
+
+    <div v-if="error">
+      <button @click="refresh()">Retry</button>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import IJobApplication from '@/models/jobApplication/interfaces/JobApplication';
+
+const {
+  data: jobApplications,
+  pending,
+  error,
+  refresh,
+} = await useFetch<IJobApplication[]>('/api/');
+</script>
