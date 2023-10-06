@@ -3,6 +3,14 @@
     <div class="flex flex-1 justify-start items-center">
       <NuxtLink to="/">{{ companyName }}</NuxtLink>
     </div>
+    <div>
+      <NuxtLink
+        v-for="navigationLink in navigationLinks"
+        :to="navigationLink.path"
+        :key="navigationLink.path"
+        >{{ navigationLink.name }}</NuxtLink
+      >
+    </div>
     <div class="flex flex-1 justify-end items-center">
       <div v-if="!profile">
         <NuxtLink to="/auth/sign-in">Sign In</NuxtLink>
@@ -35,6 +43,7 @@
 <script setup lang="ts">
 import companyName from '~/lib/constants/companyName';
 import profileMenuLinks from '~/lib/links/profileMenuLinks';
+import navigationLinks from '~/lib/links/navigationLinks';
 
 const profileMenuActive = ref(false);
 
