@@ -18,4 +18,6 @@ export const jobOffersCollection = mongoClient.collection('jobOffers');
 
 export const jobPostsCollection = mongoClient.collection('jobPosts');
 
+export const savedJobPostsCollection = mongoClient.collection('savedJobPosts');
+
 export const usersCollection = mongoClient.collection('users');
