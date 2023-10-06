@@ -12,6 +12,14 @@ const profileMenuLinks = [
     path: '/profile/my-companies',
   },
   {
+    name: 'Saved Jobs',
+    path: '/profile/saved-jobs',
+  },
+  {
+    name: 'Followed Companies',
+    path: '/profile/followed-companies',
+  },
+  {
     name: 'Job Applications',
     path: '/profile/job-applications',
   },
