@@ -3,15 +3,24 @@
     <h1>My Companies</h1>
     <button>Create Company</button>
     <CreateCompanyForm />
+
     <div v-if="!companies">
       <p>You have no companies yet.</p>
     </div>
+
     <div v-if="companies">
       <CompanyOwnerCard
         v-for="company in companies"
         :key="company._id"
         v-bind="company"
       />
+    </div>
+    <div v-if="pending">
+      <p>Loading...</p>
+    </div>
+
+    <div v-if="error">
+      <button @click="refresh()">Retry</button>
     </div>
   </div>
 </template>
