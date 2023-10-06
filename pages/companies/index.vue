@@ -33,4 +33,16 @@ const {
   error,
   refresh,
 } = await useFetch<ICompany[]>('/api/companies');
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `Find Companies | ${companyName}`,
+  ogTitle: `Find Companies | ${companyName}`,
+  description: `Discover top tech companies to work for today on ${companyName}.  Discover top career opportunities in the industry today and elevate your path to a successful career in tech.`,
+  ogDescription: `Discover top tech companies to work for today on ${companyName}.  Discover top career opportunities in the industry today and elevate your path to a successful career in tech.`,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
