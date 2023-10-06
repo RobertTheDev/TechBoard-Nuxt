@@ -4,6 +4,18 @@
       <p>{{ profile.emailAddress }}</p>
       <p>{{ profile.firstName }} {{ profile.lastName }}</p>
     </div>
+
+    <div v-if="!profile">
+      <p>No profile found.</p>
+    </div>
+
+    <div v-if="pending">
+      <p>Loading...</p>
+    </div>
+
+    <div v-if="error">
+      <button @click="refresh()">Retry</button>
+    </div>
   </div>
 </template>
 
