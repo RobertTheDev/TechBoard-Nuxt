@@ -32,7 +32,7 @@
           />
         </div>
 
-        <ProfileMenu v-if="profileMenuActive" />
+        <ProfileMenu ref="profileMenuTarget" v-if="profileMenuActive" />
       </div>
     </div>
   </header>
@@ -42,8 +42,13 @@
 import companyName from '~/lib/constants/companyName';
 import navigationLinks from '~/lib/links/navigationLinks';
 import IProfile from '~/models/profile/interfaces/Profile';
+import { onClickOutside } from '@vueuse/core';
 
 const profileMenuActive = ref(false);
+
+const profileMenuTarget = ref(null);
+
+onClickOutside(profileMenuTarget, () => (profileMenuActive.value = false));
 
 function handleToggleProfileMenu() {
   profileMenuActive.value = !profileMenuActive.value;
