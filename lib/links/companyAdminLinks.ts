@@ -1,31 +1,32 @@
 const companyAdminLinks = [
   {
-    name: 'Company Owners',
-    path: '/admin/company-owners',
+    name: 'Create Job Post',
+    path: 'create-job-post',
   },
   {
-    name: 'List A Job',
-    path: '/admin/create-job-post',
+    name: 'Job Posts',
+    path: 'job-posts',
   },
   {
     name: 'Job Applications',
-    path: '/admin/job-applications',
+    path: 'job-applications',
   },
   {
     name: 'Job Interviews',
-    path: '/admin/job-interviews',
+    path: 'job-interviews',
   },
+
   {
     name: 'Job Offers',
-    path: '/admin/job-offers',
+    path: 'job-offers',
   },
   {
-    name: 'Listed Job Posts',
-    path: '/admin/job-posts',
+    name: 'Company Owners',
+    path: 'company-owners',
   },
   {
     name: 'Company Settings',
-    path: '/admin/company-settings',
+    path: 'company-settings',
   },
 ];
 
