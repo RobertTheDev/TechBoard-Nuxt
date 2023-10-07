@@ -1,27 +1,29 @@
 <template>
-  <div>
-    <h1>Company Owners</h1>
+  <NuxtLayout name="company-admin">
+    <div>
+      <h1>Company Owners</h1>
 
-    <div v-if="companyOwners">
-      <CompanyOwnerCard
-        v-for="companyOwner in companyOwners"
-        :key="companyOwner._id"
-        v-bind="companyOwner"
-      />
-    </div>
+      <div v-if="companyOwners">
+        <CompanyOwnerCard
+          v-for="companyOwner in companyOwners"
+          :key="companyOwner._id"
+          v-bind="companyOwner"
+        />
+      </div>
 
-    <div v-if="!companyOwners">
-      <p>No company owners were found.</p>
-    </div>
+      <div v-if="!companyOwners">
+        <p>No company owners were found.</p>
+      </div>
 
-    <div v-if="pending">
-      <p>Loading...</p>
-    </div>
+      <div v-if="pending">
+        <p>Loading...</p>
+      </div>
 
-    <div v-if="error">
-      <button @click="refresh()">Retry</button>
+      <div v-if="error">
+        <button @click="refresh()">Retry</button>
+      </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
