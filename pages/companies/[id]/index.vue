@@ -23,12 +23,14 @@
 <script setup lang="ts">
 import ICompany from '@/models/company/interfaces/Company';
 
+const { id } = useRoute().params;
+
 const {
   data: company,
   pending,
   error,
   refresh,
-} = await useFetch<ICompany | null>('/api/companies/:id');
+} = await useFetch<ICompany | null>(`/api/companies/${id}`);
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
