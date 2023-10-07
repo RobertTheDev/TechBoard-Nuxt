@@ -14,7 +14,9 @@ const createCompanySchema = object({
     .optional(),
   description: string({
     invalid_type_error: 'Company description must be a string.',
-  }).nonempty('Company category cannot be empty.'),
+  })
+    .nonempty('Company category cannot be empty.')
+    .optional(),
   logoUrl: string({
     invalid_type_error: 'Company logo URL must be a string.',
   })
