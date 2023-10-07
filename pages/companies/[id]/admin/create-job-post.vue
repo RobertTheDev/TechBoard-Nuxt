@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1>Create Job Post</h1>
-    <CreateJobPostForm />
-  </div>
+  <NuxtLayout name="company-admin">
+    <div>
+      <h1>Create Job Post</h1>
+      <CreateJobPostForm />
+    </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
