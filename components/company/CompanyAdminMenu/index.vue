@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>Company Admin Menu</h1>
+  <div class="flex flex-col">
     <NuxtLink
       v-for="companyAdminLink in companyAdminLinks"
       :key="companyAdminLink.path"
