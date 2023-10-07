@@ -1,8 +1,5 @@
 import { ObjectId } from 'mongodb';
-import {
-  companiesCollection,
-  jobPostsCollection,
-} from '~/server/lib/db/mongodb/collections';
+import { companiesCollection } from '~/server/lib/db/mongodb/collections';
 import { H3Event, EventHandlerRequest } from 'h3';
 
 // This handler finds and returns a company by its unique id from the db.
