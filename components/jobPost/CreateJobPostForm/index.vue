@@ -35,11 +35,16 @@ const formHandler = ref<IFormHandler>({
   successMessage: undefined,
 });
 
+const { id: companyId } = useRoute().params;
+
 async function handleCreateJobPost(body: any) {
-  const { pending, error } = await useFetch(`/api/job-posts`, {
-    method: 'POST',
-    body,
-  });
+  const { pending, error } = await useFetch(
+    `/api/companies/${companyId}/post-job`,
+    {
+      method: 'POST',
+      body,
+    },
+  );
   if (pending.value) {
     formHandler.value.pending = pending.value;
   } else if (error.value) {
