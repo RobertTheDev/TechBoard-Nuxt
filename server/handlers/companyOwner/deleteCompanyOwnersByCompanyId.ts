@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { jobPostsCollection } from '~/server/lib/db/mongodb/collections';
+import { companyOwnersCollection } from '~/server/lib/db/mongodb/collections';
 import { H3Event, EventHandlerRequest } from 'h3';
 
 // This handler deletes company owners from the db using their matching company id.
@@ -7,9 +7,9 @@ import { H3Event, EventHandlerRequest } from 'h3';
 export default async function deleteCompanyOwnersByCompanyId(
   event: H3Event<EventHandlerRequest>,
 ) {
-  const { companyId } = event.context.params as { companyId: string };
+  const { id: companyId } = event.context.params as { id: string };
 
-  const deletedCompanyOwners = await jobPostsCollection.deleteMany({
+  const deletedCompanyOwners = await companyOwnersCollection.deleteMany({
     companyId: new ObjectId(companyId),
   });
 
