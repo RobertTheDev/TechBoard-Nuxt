@@ -1,25 +1,24 @@
 <template>
-  <div>
-    <Form
-      @submit="handleCreateJobPost"
-      :validation-schema="veeValidateZodSchema"
-    >
-      <label htmlFor="title">Add title</label>
-      <Field type="text" name="title" />
-      <ErrorMessage name="title" />
+  <Form
+    @submit="handleCreateJobPost"
+    :validation-schema="veeValidateZodSchema"
+    class="flex flex-col"
+  >
+    <label htmlFor="title">Add title</label>
+    <Field type="text" name="title" />
+    <ErrorMessage name="title" />
 
-      <p v-if="formHandler.errorMessage">
-        {{ formHandler.errorMessage }}
-      </p>
-      <p v-if="formHandler.successMessage">
-        {{ formHandler.successMessage }}
-      </p>
+    <p v-if="formHandler.errorMessage">
+      {{ formHandler.errorMessage }}
+    </p>
+    <p v-if="formHandler.successMessage">
+      {{ formHandler.successMessage }}
+    </p>
 
-      <button :disabled="formHandler.pending" type="submit">
-        {{ formHandler.pending ? 'Loading...' : 'Create Job Post' }}
-      </button>
-    </Form>
-  </div>
+    <button :disabled="formHandler.pending" type="submit">
+      {{ formHandler.pending ? 'Loading...' : 'Create Job Post' }}
+    </button>
+  </Form>
 </template>
 
 <script lang="ts" setup>
