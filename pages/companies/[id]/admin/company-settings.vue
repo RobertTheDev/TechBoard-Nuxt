@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1>Update Company</h1>
-    <UpdateCompanyForm />
-  </div>
+  <NuxtLayout name="company-admin">
+    <div>
+      <h1>Update Company</h1>
+      <UpdateCompanyForm />
+    </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
