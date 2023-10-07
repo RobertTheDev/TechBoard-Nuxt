@@ -1,24 +1,26 @@
 <template>
-  <div>
-    <div v-if="jobPosts">
-      <JobPostCard
-        v-for="jobPost in jobPosts"
-        :key="jobPost._id"
-        v-bind="jobPost"
-      />
-    </div>
+  <NuxtLayout name="company-admin">
+    <div>
+      <div v-if="jobPosts">
+        <JobPostCard
+          v-for="jobPost in jobPosts"
+          :key="jobPost._id"
+          v-bind="jobPost"
+        />
+      </div>
 
-    <div v-if="!jobPosts">
-      <p>No job posts found.</p>
-    </div>
+      <div v-if="!jobPosts">
+        <p>No job posts found.</p>
+      </div>
 
-    <div v-if="pending">
-      <p>Loading...</p>
+      <div v-if="pending">
+        <p>Loading...</p>
+      </div>
+      <div v-if="error">
+        <button @click="refresh()">Retry</button>
+      </div>
     </div>
-    <div v-if="error">
-      <button @click="refresh()">Retry</button>
-    </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
