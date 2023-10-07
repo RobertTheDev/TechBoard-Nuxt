@@ -3,7 +3,7 @@
     <NuxtLink
       v-for="companyAdminLink in companyAdminLinks"
       :key="companyAdminLink.path"
-      :to="companyAdminLink.path"
+      :to="`${companyAdminLink.path}`"
     >
       {{ companyAdminLink.name }}
     </NuxtLink>
