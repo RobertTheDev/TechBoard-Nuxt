@@ -1,5 +1,5 @@
-import deleteCompanyOwnerById from '~/server/handlers/companyOwner/deleteCompanyOwnerById';
-import getCompanyOwnerById from '~/server/handlers/companyOwner/getCompanyOwnerById';
+import deleteCompanyById from '~/server/handlers/company/deleteCompanyById';
+import getCompanyById from '~/server/handlers/company/getCompanyById';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   // This handler gets a company owner by its unique id from the database.
   if (method === 'GET') {
     try {
-      return await getCompanyOwnerById(event);
+      return await getCompanyById(event);
     } catch (error) {
       // If an error occurs then log the error and return an unsuccessful statement.
       const errorMessage = (error as Error).message;
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
   // This handler deletes a company owner by its unique id from the database.
   if (method === 'DELETE') {
     try {
-      return await deleteCompanyOwnerById(event);
+      return await deleteCompanyById(event);
     } catch (error) {
       // If an error occurs then log the error and return an unsuccessful statement.
       const errorMessage = (error as Error).message;
