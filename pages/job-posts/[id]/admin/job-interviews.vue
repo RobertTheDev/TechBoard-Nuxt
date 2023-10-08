@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="company-admin">
+  <NuxtLayout name="job-post-admin">
     <div>
       <h1>Job Interviews</h1>
 
@@ -29,12 +29,16 @@
 <script setup lang="ts">
 import IJobInterview from '~/models/jobInterview/interfaces/JobInterview';
 
+const { id: jobPostId } = useRoute().params;
+
 const {
   data: jobInterviews,
   pending,
   error,
   refresh,
-} = await useFetch<IJobInterview[]>('/api/');
+} = await useFetch<IJobInterview[]>(
+  `/api/job-posts/${jobPostId}/job-interviews`,
+);
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
