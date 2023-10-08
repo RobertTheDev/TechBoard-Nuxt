@@ -4,7 +4,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 
 // This handler gets job application from the db by finding its unique id.
 
-export default async function getJobApplicationsByJobPostId(
+export default async function getJobApplicationById(
   event: H3Event<EventHandlerRequest>,
 ) {
   const { id } = event.context.params as { id: string };
