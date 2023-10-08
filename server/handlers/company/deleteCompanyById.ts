@@ -2,7 +2,7 @@ import { ObjectId } from 'mongodb';
 import { companiesCollection } from '~/server/lib/db/mongodb/collections';
 import { H3Event, EventHandlerRequest } from 'h3';
 import isAuthenticated from '../auth/helpers/isAuthenticated';
-import isCompanyOwner from '../companyOwner/isCompanyOwner';
+import isCompanyOwner from '../companyOwner/helpers/isCompanyOwner';
 import deleteCompanyOwnersByCompanyId from './companyOwners/deleteCompanyOwnersByCompanyId';
 import closeCompanySchema from '~/models/company/validators/closeCompany.schema';
 
