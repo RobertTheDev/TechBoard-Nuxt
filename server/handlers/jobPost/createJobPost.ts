@@ -3,7 +3,7 @@ import createJobPostSchema from '~/models/jobPost/validators/createJobPost.schem
 import { jobPostsCollection } from '../../lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
 import isAuthenticated from '../auth/helpers/isAuthenticated';
-import isCompanyOwner from '../companyOwner/isCompanyOwner';
+import isCompanyOwner from '../companyOwner/helpers/isCompanyOwner';
 
 // This handler validates the request body and creates a new job post.
 
