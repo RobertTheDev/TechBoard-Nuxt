@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="company-admin">
+  <NuxtLayout name="job-post-admin">
     <div>
       <h1>Job Applications</h1>
 
@@ -29,12 +29,16 @@
 <script setup lang="ts">
 import IJobApplication from '@/models/jobApplication/interfaces/JobApplication';
 
+const { id: jobPostId } = useRoute().params;
+
 const {
   data: jobApplications,
   pending,
   error,
   refresh,
-} = await useFetch<IJobApplication[]>('/api/');
+} = await useFetch<IJobApplication[]>(
+  `/api/job-posts/${jobPostId}/job-applications`,
+);
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
