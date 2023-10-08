@@ -1,10 +1,10 @@
 import { H3Event, EventHandlerRequest } from 'h3';
-import { usersCollection } from '../../lib/db/mongodb/collections';
-import getSessionUser from '../auth/helpers/getSessionUser';
+import { usersCollection } from '../../../lib/db/mongodb/collections';
+import getSessionUser from '../../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import changeEmailSchema from '~/models/settings/validators/changeEmailSchema';
-import isAuthenticated from '../auth/helpers/isAuthenticated';
+import isAuthenticated from '../../auth/helpers/isAuthenticated';
 
 // This handler validates the request body and changes the user's email address.
 
