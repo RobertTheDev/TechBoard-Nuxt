@@ -1,7 +1,7 @@
 import { H3Event, EventHandlerRequest } from 'h3';
-import { usersCollection } from '../../lib/db/mongodb/collections';
+import { usersCollection } from '../../../lib/db/mongodb/collections';
 import sendPasswordResetTokenSchema from '~/models/auth/validators/sendPasswordResetToken.schema';
-import isSignedIn from './isSignedIn';
+import isSignedIn from '../isSignedIn';
 import generateToken from '~/server/lib/tokenManagement/generateToken';
 import isTokenUnexpired from '~/server/lib/tokenManagement/isTokenUnexpired';
 
