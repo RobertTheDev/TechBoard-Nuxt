@@ -1,24 +1,23 @@
 const jobPostAdminLinks = [
   {
     name: 'Update Job Post',
-    path: 'create-job-post',
+    path: 'edit-job-post',
   },
   {
-    name: 'View Job Post',
-    path: 'job-post',
+    name: 'Job Applications',
+    path: 'job-applications',
   },
   {
     name: 'Job Interviews',
     path: 'job-interviews',
   },
-
   {
     name: 'Job Offers',
     path: 'job-offers',
   },
   {
-    name: 'Company Owners',
-    path: 'company-owners',
+    name: 'Close Job',
+    path: 'close-job-post',
   },
 ];
 
