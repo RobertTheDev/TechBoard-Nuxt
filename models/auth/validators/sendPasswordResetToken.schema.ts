@@ -7,7 +7,7 @@ const sendPasswordResetTokenSchema = object({
     required_error: 'Email address is required.',
   })
     .email({ message: 'Email address must be in valid email format.' })
-    .nonempty({ message: 'Email address cannot be empty.' }),
+    .nonempty({ message: 'Email address is required.' }),
 });
 
 // Create a TypeScript type from the schema.
