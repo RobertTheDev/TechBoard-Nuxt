@@ -1,5 +1,5 @@
 import { H3Event, EventHandlerRequest } from 'h3';
-import getSessionUser from '../auth/getSessionUser';
+import getSessionUser from '../auth/helpers/getSessionUser';
 import { usersCollection } from '~/server/lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
 import isAuthenticated from '../auth/isAuthenticated';

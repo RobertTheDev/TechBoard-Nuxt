@@ -5,7 +5,7 @@ import {
 } from '../../lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
 import isAuthenticated from '../auth/isAuthenticated';
-import getSessionUser from '../auth/getSessionUser';
+import getSessionUser from '../auth/helpers/getSessionUser';
 
 // This handler validates the request body and creates a new job post.
 

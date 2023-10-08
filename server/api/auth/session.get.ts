@@ -1,4 +1,4 @@
-import getSessionUser from '~/server/handlers/auth/getSessionUser';
+import getSessionUser from '~/server/handlers/auth/helpers/getSessionUser';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 // This handler gets the user from session.

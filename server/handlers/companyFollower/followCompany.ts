@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 import { companyFollowersCollection } from '../../lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
 import isAuthenticated from '../auth/isAuthenticated';
-import getSessionUser from '../auth/getSessionUser';
+import getSessionUser from '../auth/helpers/getSessionUser';
 
 // This handler follows or unfollows a company by creating or deleting a company follower.
 

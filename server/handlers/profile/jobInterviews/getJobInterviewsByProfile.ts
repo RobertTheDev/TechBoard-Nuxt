@@ -1,7 +1,7 @@
 import { jobInterviewsCollection } from '~/server/lib/db/mongodb/collections';
 import isAuthenticated from '../../auth/isAuthenticated';
 import { H3Event, EventHandlerRequest } from 'h3';
-import getSessionUser from '../../auth/getSessionUser';
+import getSessionUser from '../../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';
 
 // This handler finds and returns all the job interviews to the signed in user from the db.
