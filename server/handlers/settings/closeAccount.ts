@@ -5,7 +5,7 @@ import getSessionUser from '../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import signOut from '../auth/signOut';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 
 // This handler validates the request body and sends a password reset token.
 

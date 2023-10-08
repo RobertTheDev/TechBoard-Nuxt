@@ -4,7 +4,7 @@ import getSessionUser from '../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
 import changePasswordSchema from '~/models/settings/validators/changePasswordSchema';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import hashPassword from '~/server/lib/passwordManagement/hashPassword';
 
 // This handler validates the request body and changes the user's password.

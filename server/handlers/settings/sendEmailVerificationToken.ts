@@ -1,7 +1,7 @@
 import { H3Event, EventHandlerRequest } from 'h3';
 import { usersCollection } from '../../lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import isTokenUnexpired from '~/server/lib/tokenManagement/isTokenUnexpired';
 import generateToken from '~/server/lib/tokenManagement/generateToken';
 import getSessionUser from '../auth/helpers/getSessionUser';

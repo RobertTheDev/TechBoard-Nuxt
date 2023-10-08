@@ -1,6 +1,6 @@
 import { H3Event, EventHandlerRequest } from 'h3';
 import { usersCollection } from '../../lib/db/mongodb/collections';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import isTokenExpired from '~/server/lib/tokenManagement/isTokenExpired';
 
 // This handler matches user with the email verifcation token and verifies them.

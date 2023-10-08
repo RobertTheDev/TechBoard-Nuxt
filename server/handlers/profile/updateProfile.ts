@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 import getSessionUser from '../auth/helpers/getSessionUser';
 import { usersCollection } from '~/server/lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import getProfile from './getProfile';
 import updateProfileSchema from '~/models/profile/validators/updateProfileSchema';
 

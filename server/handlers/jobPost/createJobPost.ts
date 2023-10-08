@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 import createJobPostSchema from '~/models/jobPost/validators/createJobPost.schema';
 import { jobPostsCollection } from '../../lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import isCompanyOwner from '../companyOwner/isCompanyOwner';
 
 // This handler validates the request body and creates a new job post.

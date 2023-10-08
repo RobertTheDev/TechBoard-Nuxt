@@ -1,5 +1,5 @@
 import { jobApplicationsCollection } from '~/server/lib/db/mongodb/collections';
-import isAuthenticated from '../../auth/isAuthenticated';
+import isAuthenticated from '../../auth/helpers/isAuthenticated';
 import { H3Event, EventHandlerRequest } from 'h3';
 import getSessionUser from '../../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';

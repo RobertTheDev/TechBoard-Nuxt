@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 import getSessionUser from '../auth/helpers/getSessionUser';
 import { usersCollection } from '~/server/lib/db/mongodb/collections';
 import { ObjectId } from 'mongodb';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 
 // This handler uses the session to query the users collection in the db.
 

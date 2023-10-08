@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb';
 import { companyOwnersCollection } from '~/server/lib/db/mongodb/collections';
 import { H3Event, EventHandlerRequest } from 'h3';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import getSessionUser from '../auth/helpers/getSessionUser';
 
 // This handler gets companues by the authenticated user.

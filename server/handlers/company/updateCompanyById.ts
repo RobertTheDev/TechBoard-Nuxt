@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3';
 import { ObjectId } from 'mongodb';
 import updateCompanySchema from '~/models/company/validators/updateCompany.schema';
 import { companiesCollection } from '~/server/lib/db/mongodb/collections';
-import isAuthenticated from '../auth/isAuthenticated';
+import isAuthenticated from '../auth/helpers/isAuthenticated';
 import isCompanyOwner from '../companyOwner/isCompanyOwner';
 
 // This handler validates the request body and updates a company by its unique id.

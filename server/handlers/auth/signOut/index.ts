@@ -1,6 +1,6 @@
 import { H3Event, EventHandlerRequest } from 'h3';
 import { useSession } from '~/server/lib/session';
-import isAuthenticated from '../isAuthenticated';
+import isAuthenticated from '../helpers/isAuthenticated';
 
 // This handler signs out a user and destroys the session.
 
