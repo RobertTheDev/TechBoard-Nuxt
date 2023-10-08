@@ -1,9 +1,9 @@
 import { H3Event, EventHandlerRequest } from 'h3';
-import { usersCollection } from '../../lib/db/mongodb/collections';
+import { usersCollection } from '../../../lib/db/mongodb/collections';
 import signUpSchema from '~/models/auth/validators/signUp.schema';
 import { useSession } from '~/server/lib/session';
 import hashPassword from '~/server/lib/passwordManagement/hashPassword';
-import isSignedIn from './isSignedIn';
+import isSignedIn from '../isSignedIn';
 
 // This handler validates the request body and signs up a new user and signs them into session.
 
