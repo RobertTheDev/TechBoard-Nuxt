@@ -3,7 +3,7 @@ import { usersCollection } from '../../../lib/db/mongodb/collections';
 import { useSession } from '~/server/lib/session';
 import signInSchema from '~/models/auth/validators/signIn.schema';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
-import isSignedIn from '../isSignedIn';
+import isSignedIn from '../helpers/isSignedIn';
 
 // This handler validates the request body and finds a user with their email address and signs them into session.
 
