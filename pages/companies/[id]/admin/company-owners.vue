@@ -4,10 +4,10 @@
       <h1>Company Owners</h1>
 
       <div v-if="companyOwners">
-        <CompanyOwnerCard
+        <ProfileCard
           v-for="companyOwner in companyOwners"
           :key="companyOwner._id"
-          v-bind="companyOwner"
+          v-bind="companyOwner.user"
         />
       </div>
 
@@ -29,12 +29,16 @@
 <script setup lang="ts">
 import ICompanyOwner from '@/models/companyOwner/interfaces/CompanyOwner';
 
+const { id: companyId } = useRoute().params;
+
 const {
   data: companyOwners,
   pending,
   error,
   refresh,
-} = await useFetch<ICompanyOwner[]>('/api/');
+} = await useFetch<ICompanyOwner[]>(
+  `/api/companies/${companyId}/company-owners`,
+);
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
