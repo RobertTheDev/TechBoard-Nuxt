@@ -2,7 +2,7 @@
   <div>
     <h1>Companies</h1>
 
-    <div v-if="companies">
+    <div v-if="companies" class="grid grid-cols-4 p-4">
       <CompanyCard
         v-for="company in companies"
         :key="company._id"
