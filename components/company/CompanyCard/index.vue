@@ -1,22 +1,26 @@
 <template>
-  <div>
-    <p>{{ company.category }}</p>
-    <p>{{ company.createdAt }}</p>
-    <p>{{ company.description }}</p>
+  <div
+    @click="navigateToCompany(company._id)"
+    class="bg-white flex flex-col items-center p-6 rounded-md overflow-hidden hover:cursor-pointer"
+  >
+    <div class="h-20 w-20 overflow-hidden rounded-full">
+      <img
+        v-if="company.logoUrl"
+        :src="company.logoUrl"
+        alt="Company logo"
+        class="h-full w-full object-cover"
+      />
+    </div>
+    <p>{{ company._id }}</p>
     <p>{{ company.name }}</p>
+    <p>{{ company.createdAt }}</p>
+    <p>{{ company.category }}</p>
     <p>{{ company.totalEmployees }}</p>
 
-    <div v-if="company.coverImage">
-      <img :src="company.coverImage.url" :alt="company.coverImage.alt" />
-    </div>
-
-    <div v-if="company.logo">
-      <img :src="company.logo.url" :alt="company.logo.alt" />
-    </div>
-
-    <button @click="navigateToCompany(company._id)">View Company</button>
-
-    <button @click="followCompany(company._id)">
+    <button
+      @click.stop="() => followCompany(company._id)"
+      class="bg-purple-500 h-auto flex w-2/3 items-center justify-center p-3 rounded-md"
+    >
       {{ followPending ? 'Loading...' : 'Follow' }}
     </button>
   </div>
@@ -37,7 +41,7 @@ const followPending = ref(false);
 
 async function followCompany(companyId: string) {
   const { pending, error, data } = await useFetch(
-    `/api/company/${companyId}/follow`,
+    `/api/companies/${companyId}/follow`,
     {
       method: 'POST',
     },
