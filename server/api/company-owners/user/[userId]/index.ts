@@ -1,5 +1,5 @@
-import deleteCompanyOwnersByUserId from '~/server/handlers/companyOwner/deleteCompanyOwnersByUserId';
-import getCompanyOwnersByUserId from '~/server/handlers/companyOwner/getCompanyOwnersByUserId';
+import deleteCompanyOwnersByUserId from '~/server/handlers/profile/companyOwners/deleteCompanyOwnersByUserId';
+import getCompanyOwnersByUserId from '~/server/handlers/profile/companyOwners/getCompanyOwnersByUserId';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
