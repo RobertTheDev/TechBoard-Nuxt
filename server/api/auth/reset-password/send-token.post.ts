@@ -1,4 +1,4 @@
-import sendPasswordResetToken from '~/server/handlers/auth/sendPasswordResetToken';
+import sendPasswordResetToken from '~/server/handlers/auth/resetPassword/sendPasswordResetToken';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 // This handler sends a password reset token to user's email.

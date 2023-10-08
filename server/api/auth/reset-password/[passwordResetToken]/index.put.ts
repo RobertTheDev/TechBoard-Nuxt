@@ -1,4 +1,4 @@
-import resetPasswordWithToken from '~/server/handlers/auth/resetPasswordWithToken';
+import resetPasswordWithToken from '~/server/handlers/auth/resetPassword/resetPasswordWithToken';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 // This handler resets a user's password using the password reset token.
