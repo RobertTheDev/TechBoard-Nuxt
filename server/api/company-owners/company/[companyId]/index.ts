@@ -1,4 +1,4 @@
-import deleteCompanyOwnersByCompanyId from '~/server/handlers/companyOwner/deleteCompanyOwnersByCompanyId';
+import deleteCompanyOwnersByCompanyId from '~/server/handlers/company/companyOwners/deleteCompanyOwnersByCompanyId';
 import getCompanyOwnersByCompanyId from '~/server/handlers/companyOwner/getCompanyOwnersByCompanyId';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 

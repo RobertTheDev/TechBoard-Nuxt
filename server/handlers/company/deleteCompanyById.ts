@@ -3,7 +3,7 @@ import { companiesCollection } from '~/server/lib/db/mongodb/collections';
 import { H3Event, EventHandlerRequest } from 'h3';
 import isAuthenticated from '../auth/helpers/isAuthenticated';
 import isCompanyOwner from '../companyOwner/isCompanyOwner';
-import deleteCompanyOwnersByCompanyId from '../companyOwner/deleteCompanyOwnersByCompanyId';
+import deleteCompanyOwnersByCompanyId from './companyOwners/deleteCompanyOwnersByCompanyId';
 import closeCompanySchema from '~/models/company/validators/closeCompany.schema';
 
 // This handler deletes a company from the db using its unique id.
