@@ -26,7 +26,7 @@ const signUpSchema = object({
     required_error: 'Password is required.',
     invalid_type_error: 'Password must be a string.',
   })
-    .min(8, { message: 'Password must be at least 8 characters long' })
+    .min(8, { message: 'Password must be at least eight characters long' })
     .regex(/[A-Z]/, {
       message: 'Password must contain at least one capital letter',
     })
