@@ -1,4 +1,4 @@
-import getJobPostsByCompanyId from '~/server/handlers/jobPost/getJobPostsByCompanyId';
+import getJobPostsByCompanyId from '~/server/handlers/company/jobPosts/getJobPostsByCompanyId';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
