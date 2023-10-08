@@ -1,5 +1,5 @@
 import ICompany from '~/models/company/interfaces/Company';
-import IUser from '~/models/user/interfaces/User';
+import IProfile from '~/models/profile/interfaces/Profile';
 
 export default interface ICompanyOwner {
   _id: string;
@@ -8,6 +8,6 @@ export default interface ICompanyOwner {
 
   company: ICompany;
   companyId: string;
-  user: IUser;
+  user: IProfile;
   userId: string;
 }
