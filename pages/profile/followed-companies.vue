@@ -3,13 +3,11 @@
     <h1>Followed Companies</h1>
 
     <div v-if="followedCompanies">
-      <p
+      <CompanyCard
         v-for="followedCompany in followedCompanies"
         :key="followedCompany._id"
-        v-bind="followedCompany"
-      >
-        {{ followedCompany.company?._id }}
-      </p>
+        v-bind="followedCompany.company!"
+      />
     </div>
 
     <div v-if="!followedCompanies || followedCompanies.length <= 0">
@@ -34,7 +32,7 @@ const {
   pending,
   error,
   refresh,
-} = await useFetch<ICompanyFollower[]>('/api/profile/followed-companies');
+} = await useFetch<ICompanyFollower[]>('/api/profile/company-followers');
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
