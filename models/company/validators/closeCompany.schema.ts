@@ -1,14 +1,14 @@
 import { string, object, z } from 'zod';
 
-// Zod validation schema defines fields required for closing a COMPANY.
+// Zod validation schema defines fields required for closing a company.
 const closeCompanySchema = object({
   confirmDelete: string({
     invalid_type_error: 'Confirm delete must be a string.',
-    required_error: 'Please type "DELETE" to close the company',
+    required_error: 'Please type "DELETE" to close the company.',
   })
-    .nonempty('Please type "DELETE" to close the company')
+    .nonempty('Please type "DELETE" to close the company.')
     .refine((value) => value === 'DELETE', {
-      message: 'Please type "DELETE" to close the account',
+      message: 'Please type "DELETE" to close the account.',
     }),
 });
 
