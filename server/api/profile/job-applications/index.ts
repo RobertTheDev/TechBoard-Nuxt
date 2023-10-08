@@ -1,4 +1,4 @@
-import getJobApplicationsByProfile from '~/server/handlers/profile/jobApplicants/getJobApplicationsByProfile';
+import getJobApplicationsByProfile from '~/server/handlers/profile/jobApplications/getJobApplicationsByProfile';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
