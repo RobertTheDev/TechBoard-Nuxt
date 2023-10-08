@@ -7,11 +7,11 @@ const signInSchema = object({
     invalid_type_error: 'Email address must be a string.',
   })
     .email('Email address must be in valid email format.')
-    .nonempty('Email address cannot be empty.'),
+    .nonempty('Email address is required.'),
   password: string({
     required_error: 'Password is required.',
     invalid_type_error: 'Password must be a string.',
-  }).nonempty('Password cannot be empty.'),
+  }).nonempty('Password is required.'),
 });
 
 // Create a TypeScript type from the schema.
