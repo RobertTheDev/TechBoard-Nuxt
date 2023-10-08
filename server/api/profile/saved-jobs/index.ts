@@ -1,4 +1,4 @@
-import getSavedJobPostsByProfile from '~/server/handlers/profile/savedJobPosts';
+import getSavedJobPostsByProfile from '~/server/handlers/profile/savedJobPosts/getSavedJobsByProfile';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
