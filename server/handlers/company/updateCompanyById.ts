@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 import updateCompanySchema from '~/models/company/validators/updateCompany.schema';
 import { companiesCollection } from '~/server/lib/db/mongodb/collections';
 import isAuthenticated from '../auth/helpers/isAuthenticated';
-import isCompanyOwner from '../companyOwner/isCompanyOwner';
+import isCompanyOwner from '../companyOwner/helpers/isCompanyOwner';
 
 // This handler validates the request body and updates a company by its unique id.
 
