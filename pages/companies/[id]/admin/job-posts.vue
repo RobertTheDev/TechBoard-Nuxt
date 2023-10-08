@@ -2,14 +2,14 @@
   <NuxtLayout name="company-admin">
     <div>
       <div v-if="jobPosts">
-        <JobPostCard
+        <CompanyJobPostCard
           v-for="jobPost in jobPosts"
           :key="jobPost._id"
           v-bind="jobPost"
         />
       </div>
 
-      <div v-if="!jobPosts">
+      <div v-if="!jobPosts || jobPosts.length < 1">
         <p>No job posts found.</p>
       </div>
 
@@ -26,12 +26,14 @@
 <script setup lang="ts">
 import IJobPost from '@/models/jobPost/interfaces/JobPost';
 
+const { id: companyId } = useRoute().params;
+
 const {
   data: jobPosts,
   pending,
   error,
   refresh,
-} = await useFetch<IJobPost[]>('/api/job-posts');
+} = await useFetch<IJobPost[]>(`/api/companies/${companyId}/job-posts`);
 
 import companyName from '~/lib/constants/companyName';
 import logoImage from '~/lib/constants/logoImage';
