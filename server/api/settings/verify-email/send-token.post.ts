@@ -1,4 +1,4 @@
-import sendEmailVerificationToken from '~/server/handlers/settings/sendEmailVerificationToken';
+import sendEmailVerificationToken from '~/server/handlers/settings/verifyEmailAddress/sendEmailVerificationToken';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 // This handler sends an email verification token to user's email address.
