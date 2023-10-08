@@ -30,9 +30,9 @@ const updateCompanySchema = object({
     .nonempty('Company name cannot be empty.')
     .optional(),
   totalEmployees: string({
-    invalid_type_error: 'Company employees must be a string.',
+    invalid_type_error: 'Company employees total must be a string.',
   })
-    .nonempty('Company employees cannot be empty.')
+    .nonempty('Company employees total cannot be empty.')
     .optional(),
 });
 
