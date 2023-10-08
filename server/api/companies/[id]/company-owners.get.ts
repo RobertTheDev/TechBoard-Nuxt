@@ -1,4 +1,4 @@
-import getCompanyOwnersByCompanyId from '~/server/handlers/companyOwner/getCompanyOwnersByCompanyId';
+import getCompanyOwnersByCompanyId from '~/server/handlers/company/companyOwners/getCompanyOwnersByCompanyId';
 import winstonLogger from '~/server/lib/logger/winston/winstonLogger';
 
 export default defineEventHandler(async (event) => {
