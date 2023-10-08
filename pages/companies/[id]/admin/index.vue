@@ -19,4 +19,16 @@
 import companyAdminLinks from '~/lib/links/companyAdminLinks';
 
 const { id: companyId } = useRoute().params;
+
+import companyName from '~/lib/constants/companyName';
+import logoImage from '~/lib/constants/logoImage';
+
+useSeoMeta({
+  title: `Company | ${companyName}`,
+  ogTitle: `Company | ${companyName}`,
+  description: ``,
+  ogDescription: ``,
+  ogImage: logoImage,
+  twitterCard: 'summary_large_image',
+});
 </script>
