@@ -1,11 +1,11 @@
 import { H3Event, EventHandlerRequest } from 'h3';
-import { usersCollection } from '../../lib/db/mongodb/collections';
+import { usersCollection } from '../../../lib/db/mongodb/collections';
 import closeAccountSchema from '~/models/settings/validators/closeAccountSchema';
-import getSessionUser from '../auth/helpers/getSessionUser';
+import getSessionUser from '../../auth/helpers/getSessionUser';
 import { ObjectId } from 'mongodb';
 import verifyPassword from '~/server/lib/passwordManagement/verifyPassword';
-import signOut from '../auth/signOut';
-import isAuthenticated from '../auth/helpers/isAuthenticated';
+import signOut from '../../auth/signOut';
+import isAuthenticated from '../../auth/helpers/isAuthenticated';
 
 // This handler validates the request body and sends a password reset token.
 
