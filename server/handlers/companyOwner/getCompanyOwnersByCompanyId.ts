@@ -7,9 +7,32 @@ import { H3Event, EventHandlerRequest } from 'h3';
 export default async function getCompanyOwnersByCompanyId(
   event: H3Event<EventHandlerRequest>,
 ) {
-  const { companyId } = event.context.params as { companyId: string };
+  const { id: companyId } = event.context.params as { id: string };
 
-  return companyOwnersCollection.find({
-    companyId: new ObjectId(companyId),
-  });
+  return companyOwnersCollection
+    .aggregate(
+      [
+        {
+          $match: {
+            companyId: new ObjectId(companyId),
+          },
+        },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'userId',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: {
+            path: '$user',
+          },
+        },
+        { $project: { 'user.password': 0 } },
+      ],
+      { maxTimeMS: 60000, allowDiskUse: true },
+    )
+    .toArray();
 }
