@@ -16,12 +16,12 @@ export default async function followCompany(
   const { _id: userId } = await getSessionUser(event);
 
   // STEP 3: Get the company id from params.
-  const { companyId } = event.context.params as { companyId: string };
+  const { id: companyId } = event.context.params as { id: string };
 
   // STEP 4: Check user if user is a company follower.
   const companyFollower = await companyFollowersCollection.findOne({
-    companyId,
-    userId,
+    companyId: new ObjectId(companyId),
+    userId: new ObjectId(userId),
   });
 
   // STEP 5: If user is not company follower then created company follower (FOLLOW).
