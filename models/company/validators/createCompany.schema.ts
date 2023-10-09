@@ -1,11 +1,15 @@
 import { object, string, z } from 'zod';
+import companyEmployeeValues from '../values/companyEmployeeValues';
+import companyCategoryValues from '../values/companyCategoryValues';
 
 // Zod validation schema defines fields required for creating a company.
 const createCompanySchema = object({
   category: string({
     required_error: 'A company category is required.',
     invalid_type_error: 'Company category must be a string.',
-  }).nonempty('Company category is required.'),
+  }).refine((value) => companyCategoryValues.includes(value), {
+    message: 'The value entered is not valid.',
+  }),
   coverImageUrl: string({
     invalid_type_error: 'Company cover image URL must be a string.',
   })
@@ -28,9 +32,11 @@ const createCompanySchema = object({
     invalid_type_error: 'Company name must be a string.',
   }).nonempty('Company name is required.'),
   totalEmployees: string({
-    required_error: 'A company employees is required.',
-    invalid_type_error: 'Company employees must be a string.',
-  }).nonempty('Company employees is required.'),
+    required_error: 'Total company employees is required.',
+    invalid_type_error: 'Total company employees must be a string.',
+  }).refine((value) => companyEmployeeValues.includes(value), {
+    message: 'The value entered is not valid.',
+  }),
 });
 
 // Create a TypeScript type from the schema.
