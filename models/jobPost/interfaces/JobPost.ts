@@ -13,18 +13,18 @@ export default interface IJobPost {
   updatedAt?: Date;
 
   // Custom fields.
-  company: ICompany;
-  companyId: string;
-  contractType: string;
-  deadlineDate: Date;
-  description: string;
-  location?: {
-    address: string;
-  };
-  locationType: string;
-  published: boolean;
-  salary: ISalary;
-  seniorLevel: string;
+  // company: ICompany;
+  // companyId: string;
+  // contractType: string;
+  // deadlineDate: Date;
+  // description: string;
+  // location?: {
+  //   address: string;
+  // };
+  // locationType: string;
+  // published: boolean;
+  // salary: ISalary;
+  // seniorLevel: string;
   title: string;
-  totalApplicants: number;
+  // totalApplicants: number;
 }
