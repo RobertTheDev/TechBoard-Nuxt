@@ -1,11 +1,27 @@
 <template>
-  <Form @submit="handleCreateJobPost" :validation-schema="veeValidateZodSchema">
+  <Form
+    class="flex flex-col"
+    @submit="handleCreateJobPost"
+    :validation-schema="veeValidateZodSchema"
+  >
     <label htmlFor="name">Add name</label>
     <Field type="text" name="name" />
     <ErrorMessage name="name" />
 
     <label htmlFor="category">Add category</label>
-    <Field type="text" name="category" />
+
+    <Field name="category" as="select">
+      <option value="" disabled>Select a category</option>
+
+      <option
+        v-for="companyCategoryValue in companyCategoryValues"
+        :key="companyCategoryValue"
+        :value="companyCategoryValue"
+      >
+        {{ companyCategoryValue }}
+      </option>
+    </Field>
+
     <ErrorMessage name="category" />
 
     <label htmlFor="coverImageUrl">Add cover image url</label>
@@ -21,7 +37,18 @@
     <ErrorMessage name="logoUrl" />
 
     <label htmlFor="totalEmployees">Add total employees</label>
-    <Field type="text" name="totalEmployees" />
+
+    <Field name="totalEmployees" as="select">
+      <option value="" disabled>Select employee total</option>
+      <option
+        v-for="companyEmployeeValue in companyEmployeeValues"
+        :key="companyEmployeeValue"
+        :value="companyEmployeeValues"
+      >
+        {{ companyEmployeeValue }}
+      </option>
+    </Field>
+
     <ErrorMessage name="totalEmployees" />
 
     <p v-if="formHandler.errorMessage">
@@ -42,6 +69,8 @@ import { ErrorMessage, Field, Form } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import createJobPostSchema from '~/models/company/validators/createCompany.schema';
 import IFormHandler from '~/models/configs/interfaces/FormHandler';
+import companyCategoryValues from '~/models/company/values/companyCategoryValues';
+import companyEmployeeValues from '~/models/company/values/companyEmployeeValues';
 
 const veeValidateZodSchema = toTypedSchema(createJobPostSchema);
 
